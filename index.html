@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Hillo is a design studio in George, Western Cape. Brands, websites and WhatsApp booking for Garden Route businesses. A higher view.">
+<title>Hillo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2314213d'/%3E%3Cpath d='M10.5 7.5v17M10.5 17.5a5.2 5.2 0 0 1 10.4 0v7' fill='none' stroke='%23fff' stroke-width='3.6' stroke-linecap='round'/%3E%3Ccircle cx='24.4' cy='9' r='2.6' fill='%232f7de1'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;1,500&family=Bodoni+Moda:ital,opsz,wght@1,6..96,400..600&family=Funnel+Display:wght@600&display=swap">
+<style>
+/* Layout: light, single-theme editorial page on a 12-col grid. Asymmetric work, Mist services band, solid Midnight contact. Funnel only for the hillo wordmark (lifted dot); Figtree everywhere else with Bodoni italic on small connector words; the Hillo star marks labels, service hovers and the Contact band. */
+:root{
+  --paper:#ffffff; --ink:#14213d; --body:#3d4659; --muted:#5b6478; --quiet:#7d8aa1; --line:#dde4ec;
+  --mist:#e9f1f8; --mist-line:#cfdeec; --well:#f3f6f9;
+  --signal:#2f7de1; --signal-deep:#1f63c2; --slate:#3f6f9b; --fog:#c9d4e3; --sky:#9cc4e4;
+  --forest:#2f4a3a; --stone:#eef0ea;
+  --display:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sans:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mark:"Funnel Display", "Figtree", system-ui, sans-serif;
+  --flair:"Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --star:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5c.9 5.6 4.9 9.6 10.5 10.5-5.6.9-9.6 4.9-10.5 10.5C11.1 16.9 7.1 12.9 1.5 12 7.1 11.1 11.1 7.1 12 1.5z'/%3E%3C/svg%3E");
+  --s0:clamp(16px,.5vw + 13px,18px); --s1:clamp(20px,1vw + 15px,26px);
+  --s2:clamp(32px,3.4vw + 16px,64px); --s3:clamp(44px,6vw + 14px,112px);
+  --r:clamp(16px,1.8vw,28px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:var(--s0);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1440px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+@media (min-width:900px){.wrap{padding-left:max(48px,env(safe-area-inset-left,0px));padding-right:max(48px,env(safe-area-inset-right,0px))}}
+.grid{display:grid;grid-template-columns:1fr;gap:clamp(20px,2vw,32px)}
+@media (min-width:900px){.grid{grid-template-columns:repeat(12,minmax(0,1fr))}}
+a{color:inherit}
+p,h1,h2,h3{margin:0}
+:focus-visible{outline:2px solid var(--signal-deep);outline-offset:3px;border-radius:6px}
+::selection{background:var(--mist-line);color:var(--ink)}
+h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:-.03em;line-height:1.02;text-wrap:balance}
+h3{letter-spacing:-.02em}
+/* Bodoni italic on small connector words only */
+.bi{font-family:var(--flair);font-style:italic;font-weight:500;font-optical-sizing:none;font-variation-settings:"opsz" 11;letter-spacing:-.02em;color:var(--signal-deep)}
+.contact .bi{color:var(--sky)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* the wordmark: lowercase hillo, the i's dot lifted into the valley between h and ll */
+.wm{display:inline-block;font-family:var(--mark);font-weight:600;letter-spacing:-.045em;line-height:1;white-space:nowrap}
+.wm .i{position:relative}
+.wm .i::after{content:"";position:absolute;left:50%;top:.06em;width:.165em;height:.165em;margin-left:-.0825em;border-radius:50%;background:var(--signal);animation:dotRise 1.4s cubic-bezier(.2,.7,.2,1) .2s both;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes dotRise{0%{transform:translateY(.42em);opacity:0}60%{transform:translateY(-.035em);opacity:1}100%{transform:none;opacity:1}}
+a:hover > .wm .i::after,a:focus-visible > .wm .i::after,.wm:hover .i::after{transform:translateY(-.05em)}
+
+/* section labels lead with the Hillo star */
+.label{font-size:14px;font-weight:500;letter-spacing:0;color:var(--muted)}
+.sp{display:inline-flex;align-items:center;gap:9px}
+.sp::before{content:"";width:13px;height:13px;flex-shrink:0;background:var(--signal);-webkit-mask:var(--star) center/contain no-repeat;mask:var(--star) center/contain no-repeat;transition:transform .7s cubic-bezier(.2,.9,.25,1.3)}
+.sp:hover::before{transform:rotate(90deg)}
+.contact .sp::before{background:var(--sky)}
+.contact{position:relative;overflow:hidden}
+.contact::after{content:"";position:absolute;right:-10vw;top:50%;width:min(70vw,720px);aspect-ratio:1;margin-top:calc(min(70vw,720px) / -2);background:#fff;opacity:.06;-webkit-mask:var(--star) center/contain no-repeat;mask:var(--star) center/contain no-repeat;animation:spin 80s linear infinite;pointer-events:none}
+.contact .wrap{position:relative;z-index:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* hero chips + cycling word */
+.hero h1{max-width:15ch}
+.chip{display:inline-flex;vertical-align:middle;align-items:center;justify-content:center;height:.72em;border-radius:99px;margin:0 .06em;position:relative;top:-.06em;overflow:hidden;text-decoration:none;
+  transform-origin:center;animation:chipIn .9s cubic-bezier(.2,.9,.25,1.2) both;transition:transform .45s cubic-bezier(.2,.7,.2,1),width .45s cubic-bezier(.2,.8,.2,1)}
+.chip:hover,.chip:focus-visible{transform:translateY(-.04em) scale(1.05)}
+.c1{width:1.5em;background:var(--chip,var(--ink));animation-delay:.35s;transition:background-color .7s ease,transform .45s cubic-bezier(.2,.7,.2,1)}
+.c1 .mini{width:.95em;height:.46em;border-radius:.09em;background:#fff;display:grid;grid-template-rows:.07em 1fr;gap:.05em;padding:.06em;box-shadow:0 .03em .08em rgba(20,33,61,.18);transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.c1 .mini b{display:block;border-radius:.03em;background:var(--line)}
+.c1 .mini i{display:block;border-radius:.03em;background:var(--chip,var(--ink));opacity:.85;transition:background-color .7s ease}
+.c1:hover .mini{transform:translateY(-.03em)}
+.c1.swap .mini{animation:pop .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes pop{0%{transform:translateY(.06em);opacity:.6}100%{transform:none;opacity:1}}
+.c2{width:1.7em;background:var(--mist);gap:.07em;padding:0 .14em;justify-content:flex-start;animation-delay:.55s}
+.c2 i{display:block;height:.2em;border-radius:.1em;background:var(--signal-deep);transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.c2 i:nth-child(1){width:.7em}
+.c2 i:nth-child(2){width:.45em;background:#fff;border:1px solid var(--mist-line)}
+.c2:hover i:nth-child(1){width:.45em}.c2:hover i:nth-child(2){width:.7em}
+@keyframes chipIn{from{transform:translateY(.12em);opacity:0}to{transform:none;opacity:1}}
+/* Hillo Receptionist typing: one Signal dot rises through the three */
+.c3{width:1.6em;background:#fff;gap:.09em;animation:none}
+.c3 i{width:.13em;height:.13em;border-radius:50%;background:#9aa6bb;animation:typing 1.4s infinite ease-in-out}
+.c3 i:nth-child(2){animation-delay:.2s;background:var(--signal)}.c3 i:nth-child(3){animation-delay:.4s}
+@keyframes typing{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-.07em)}}
+.shead h2 .chip,.contact h2 .chip{animation:none}
+.rot{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.rot.anim{white-space:nowrap}
+.rot-in{display:inline-block;background:linear-gradient(var(--signal),var(--signal)) 0 100%/100% .06em no-repeat;transition:transform .5s cubic-bezier(.5,0,.2,1),opacity .4s}
+.rot-in.out{transform:translateY(-70%);opacity:0}
+.rot-in.pre{transform:translateY(70%);opacity:0;transition:none}
+
+/* buttons */
+.pill{display:inline-flex;align-items:center;gap:.45em;font:500 14px/1 var(--sans);background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:99px;padding:.75em 1.15em;text-decoration:none;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+.pill:hover{border-color:var(--ink)}
+.pill[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:.6em;font:500 16px/1 var(--sans);background:var(--ink);color:#fff;border-radius:99px;padding:1em 1.5em;text-decoration:none;transition:background .25s,gap .3s}
+.btn:hover{background:var(--signal-deep);gap:.9em}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--ink);background:transparent}
+.btn.white{background:#fff;color:var(--ink)}
+.btn.white:hover{background:var(--mist)}
+
+/* header: the active section gets the dot above it */
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:24px}
+.logo{text-decoration:none;font-size:30px;padding-top:2px;display:inline-flex;align-items:baseline;gap:.24em;white-space:nowrap}
+.logo .desc{font-family:var(--mark);font-weight:400;letter-spacing:-.045em;line-height:1;color:var(--slate)}
+@media (max-width:400px){.logo{font-size:26px}}
+.nav{display:flex;gap:clamp(16px,2.4vw,32px);font-size:15px;font-weight:500}
+.nav a{position:relative;text-decoration:none;color:var(--muted);padding-block:10px;transition:color .25s}
+.nav a:hover,.nav a[aria-current]{color:var(--ink)}
+.nav a::before{content:"";position:absolute;left:50%;top:-2px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:var(--signal);opacity:0;transform:translateY(8px);transition:opacity .35s,transform .5s cubic-bezier(.2,.7,.2,1)}
+.nav a[aria-current]::before{opacity:1;transform:none}
+.nav{align-items:center}
+.nav a.say{background:var(--ink);color:#fff;border-radius:99px;padding:11px 18px 10px;display:inline-flex;align-items:baseline;gap:.3em;transition:background .25s}
+.nav a.say:hover{background:var(--signal-deep);color:#fff}
+.nav a.say::before{display:none}
+.nav a.say .wm{font-size:1.3em}
+.nav a.say .wm .i::after{width:.19em;height:.19em;margin-left:-.095em}
+/* "Say hillo": hillo set as the wordmark wherever it appears in a sentence */
+.say-h{display:inline-flex;align-items:baseline;gap:.28em}
+.say-h .wm{font-size:1.25em}
+.say-h .wm .i::after{width:.19em;height:.19em;margin-left:-.095em}
+@media (max-width:640px){.nav .hide-s{display:none}}
+
+/* hero */
+.hero{padding-block:clamp(56px,9vw,150px) clamp(48px,6vw,96px);row-gap:clamp(28px,3vw,48px)}
+.hero .loc{grid-column:1 / span 12}
+.hero h1{font-size:var(--s3);grid-column:1 / span 11}
+.hero .sub{grid-column:1 / span 7;font-size:clamp(24px,1.5vw + 15px,38px);line-height:1.25;letter-spacing:-.02em;font-weight:500;color:var(--ink);max-width:24ch;text-wrap:balance}
+.hero .sub .chip{animation-delay:.6s}
+.hero .side{grid-column:9 / span 4;display:grid;gap:24px;align-self:end}
+.hero .side p{color:var(--muted);max-width:38ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:899px){.hero .loc,.hero h1,.hero .sub,.hero .side{grid-column:auto}}
+
+.showcase{align-items:end;padding-bottom:clamp(96px,12vw,200px)}
+.showcase .cap{grid-column:1 / span 2;display:grid;gap:6px;font-size:14px;color:var(--muted);padding-bottom:8px}
+.showcase .cap b{color:var(--ink);font-weight:500}
+.panel{grid-column:3 / span 10;border-radius:var(--r);background:var(--mist);overflow:hidden;display:flex;justify-content:center;align-items:flex-end;gap:clamp(12px,3vw,48px);
+  padding:clamp(32px,5vw,80px) clamp(16px,4vw,56px) 0;aspect-ratio:16/8.5;max-width:100%}
+.panel .phone{margin-bottom:-7%}
+.panel .phone:nth-child(2){margin-bottom:-2%}
+@media (max-width:899px){.showcase .cap{grid-column:auto;order:2}.panel{grid-column:auto}}
+@media (max-width:700px){.panel{aspect-ratio:4/4.6}.panel .phone:nth-child(3){display:none}}
+
+/* section heads */
+.shead{align-items:end;margin-bottom:clamp(32px,4vw,64px)}
+.shead .label{grid-column:1 / span 2;padding-bottom:10px}
+.shead h2{grid-column:3 / span 6;font-size:var(--s2)}
+.shead .aside{grid-column:9 / span 4;justify-self:end;display:flex;gap:6px;flex-wrap:wrap}
+@media (max-width:899px){.shead .label,.shead h2,.shead .aside{grid-column:auto;justify-self:start}}
+
+/* work */
+.work{padding-bottom:clamp(110px,14vw,220px)}
+.cards{align-items:start}
+.card{text-decoration:none;display:grid;gap:18px;min-width:0}
+.card:nth-child(1){grid-column:1 / span 7}
+.card:nth-child(2){grid-column:9 / span 4;margin-top:clamp(0px,14vw,240px)}
+@media (max-width:899px){.card:nth-child(n){grid-column:auto;margin-top:0}}
+.card .stage{border-radius:var(--r);max-width:100%;display:flex;align-items:center;justify-content:center;gap:clamp(10px,2vw,24px);overflow:hidden;padding:clamp(24px,4vw,56px);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:nth-child(1) .stage{aspect-ratio:5/4}
+.card:nth-child(2) .stage{aspect-ratio:4/5}
+.card:hover .stage{transform:scale(.985)}
+.card .stage.g{background:var(--forest)}
+.card .stage.s{background:var(--mist)}
+.card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+.card h3{font-size:var(--s1);line-height:1.2}
+.card .arrow{color:var(--signal-deep);transition:transform .4s}
+.card:hover .arrow{transform:translateX(4px)}
+.card[hidden]{display:none}
+
+/* phone mocks */
+.phone{width:clamp(130px,17vw,240px);aspect-ratio:9/19;max-width:100%;background:#fff;border:1px solid var(--line);border-radius:clamp(20px,2.4vw,34px);
+  box-shadow:0 30px 60px -30px rgba(20,33,61,.35);overflow:hidden;display:flex;flex-direction:column;font-size:clamp(8px,.85vw,11px);line-height:1.4;flex-shrink:0;color:var(--ink)}
+.card .phone{width:clamp(120px,14vw,200px)}
+.card:nth-child(2) .phone{width:clamp(120px,15vw,210px)}
+.card .phone.back{transform:translateY(10%)}
+@media (max-width:560px){.card .phone.back{display:none}.card .phone{width:54%!important}}
+.notch{height:7%;display:flex;justify-content:center;align-items:center;flex-shrink:0}
+.notch:after{content:"";width:30%;height:26%;background:var(--line);border-radius:99px}
+.tr{flex:1;display:flex;flex-direction:column;gap:8%;padding:6% 9%;background:var(--stone)}
+.tr .t{font-weight:600;font-size:1.8em;letter-spacing:-.03em;line-height:1}
+.tr .bar{height:4px;background:#dfe2d9;border-radius:4px;overflow:hidden}
+.tr .bar b{display:block;height:100%;width:40%;background:var(--forest)}
+.tr .vid{aspect-ratio:4/5;background:var(--forest);border-radius:10px;display:flex;align-items:center;justify-content:center}
+.tr .vid:after{content:"";border-left:14px solid var(--stone);border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:4px}
+.tr ol{margin:0;padding:0;list-style:none;display:grid}
+.tr li{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #dfe2d9;color:var(--muted)}
+.tr li.on{color:var(--ink)}
+.tr li b{font-weight:500;color:var(--forest)}
+.wa{flex:1;display:flex;flex-direction:column;background:var(--well)}
+.wa .head{padding:5% 8%;border-bottom:1px solid var(--line);font-weight:600;background:#fff}
+.wa .head small{display:block;font-weight:400;color:var(--muted)}
+.wa .msgs{flex:1;display:flex;flex-direction:column;gap:7px;padding:7%;justify-content:flex-end}
+.wa .msgs.start{justify-content:flex-start}
+.b{max-width:84%;padding:6px 9px;border-radius:10px;background:#fff;border:1px solid var(--line)}
+.b.me{align-self:flex-end;background:var(--signal-deep);color:#fff;border-color:var(--signal-deep)}
+.chips{display:flex;flex-wrap:wrap;gap:4px}
+.chips span{border:1px solid var(--line);border-radius:99px;padding:2px 7px;background:#fff}
+.chips span.on{border-color:var(--signal-deep);color:var(--signal-deep)}
+
+/* services band */
+.band{background:var(--mist)}
+.band .wrap{padding-block:clamp(88px,11vw,180px)}
+.band .intro{grid-column:1 / span 5;display:grid;gap:28px;align-content:start}
+@media (min-width:900px){.band .intro{position:sticky;top:40px}}
+.band .intro h2{font-size:var(--s2)}
+.band .intro p{color:var(--muted);max-width:40ch}
+.svc{grid-column:7 / span 6;list-style:none;margin:0;padding:0;border-top:1px solid var(--mist-line)}
+@media (max-width:899px){.band .intro,.svc{grid-column:auto}}
+.svc li{display:grid;grid-template-columns:1fr;gap:10px;padding-block:clamp(26px,3vw,40px);border-bottom:1px solid var(--mist-line)}
+.svc h3{font-size:var(--s1);display:flex;align-items:center}
+.svc h3::before{content:"";width:0;height:.7em;flex-shrink:0;background:var(--signal);-webkit-mask:var(--star) center/contain no-repeat;mask:var(--star) center/contain no-repeat;transform:rotate(-90deg) scale(.3);opacity:0;transition:width .45s cubic-bezier(.2,.8,.2,1),margin .45s cubic-bezier(.2,.8,.2,1),transform .55s cubic-bezier(.2,.9,.25,1.3),opacity .3s}
+.svc li:hover h3::before{width:.7em;margin-right:.4em;transform:none;opacity:1}
+.svc p{color:var(--muted);max-width:44ch}
+.svc .eg{font-size:14px;color:var(--signal-deep)}
+
+/* process */
+.process{padding-block:clamp(110px,13vw,210px)}
+.steps{list-style:none;margin:0;padding:0}
+.steps li{grid-column:span 4;display:grid;gap:14px;align-content:start;border-top:2px solid var(--ink);padding-top:22px}
+.steps li:first-child{border-color:var(--signal)}
+@media (max-width:899px){.steps li{grid-column:auto}}
+.steps .n{font-size:14px;font-weight:600;color:var(--signal-deep);font-variant-numeric:tabular-nums}
+.steps h3{font-size:var(--s1)}
+.steps p{color:var(--muted);max-width:34ch}
+
+/* who */
+.who{padding-bottom:clamp(110px,13vw,210px)}
+.who .label{grid-column:1 / span 2;padding-top:1.4em}
+.who .big{grid-column:3 / span 10;font-family:var(--display);font-size:clamp(34px,4.6vw + 10px,84px);line-height:1.08;letter-spacing:-.035em;font-weight:500;text-wrap:balance}
+.who .big .m{color:var(--quiet)}
+@media (max-width:899px){.who .label,.who .big{grid-column:auto;padding-top:0}}
+
+/* about */
+.about{padding-bottom:clamp(110px,13vw,210px);border-top:1px solid var(--line);padding-top:clamp(40px,5vw,72px)}
+.about .label{grid-column:1 / span 2}
+.about .lead{grid-column:3 / span 6;font-family:var(--display);font-weight:500;font-size:var(--s1);line-height:1.3;letter-spacing:-.015em;max-width:30ch}
+.about .txt{grid-column:10 / span 3;display:grid;gap:16px;color:var(--muted);font-size:16px}
+@media (max-width:899px){.about .label,.about .lead,.about .txt{grid-column:auto}}
+
+/* contact: solid Midnight */
+.contact{background:var(--ink);color:#fff}
+.contact .wrap{padding-block:clamp(96px,12vw,200px)}
+.contact .label{color:var(--fog)}
+.contact h2{font-size:var(--s3);max-width:13ch;margin-top:clamp(24px,3vw,40px)}
+.contact h2 .wm{font-size:1.08em;letter-spacing:-.05em}
+.contact .hi-sub{font-size:var(--s1);line-height:1.35;letter-spacing:-.015em;color:var(--fog);max-width:32ch;margin-top:clamp(20px,2.4vw,32px)}
+.contact .row{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:clamp(40px,5vw,72px)}
+.contact .em{font-size:var(--s1);letter-spacing:-.01em;user-select:all;overflow-wrap:anywhere}
+.contact button{all:unset;cursor:pointer;color:var(--fog);border-bottom:1px solid var(--fog);font-size:14px}
+.contact button:hover{color:#fff}
+.contact button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.contact .note{color:var(--fog);font-size:13px;margin-top:14px;min-height:1.2em}
+
+footer .wrap{padding-block:clamp(72px,8vw,120px) 32px;display:grid;gap:clamp(32px,4vw,48px)}
+.fcols .lead{grid-column:1 / span 5;font-family:var(--display);font-weight:500;font-size:var(--s1);line-height:1.3;letter-spacing:-.015em;max-width:24ch}
+.fcols .lead b{font-weight:600;color:var(--ink)}
+.fcols > div{grid-column:span 2}
+.fcols > div:nth-of-type(1){grid-column:9 / span 2}
+@media (max-width:899px){.fcols .lead,.fcols > div,.fcols > div:nth-of-type(1){grid-column:auto}}
+.fcols ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.fcols a{text-decoration:none;color:var(--muted)}
+.fcols a:hover{color:var(--signal-deep)}
+.sign{display:block;text-decoration:none;font-size:clamp(88px,19vw,300px);padding-top:clamp(24px,4vw,64px);overflow:hidden;color:var(--ink)}
+.sign .wm{line-height:1}
+.fbase{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--muted)}
+
+/* case study */
+.cs .wrap{padding-block:clamp(24px,4vw,48px) 0}
+.cs-head{padding-block:clamp(48px,7vw,110px) clamp(40px,5vw,72px);row-gap:28px}
+.cs-head .label{grid-column:1 / span 12}
+.cs-head h1{grid-column:1 / span 9;font-size:var(--s3)}
+.facts{grid-column:1 / span 12;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:24px;border-top:1px solid var(--line);padding-top:24px;margin-top:12px}
+.facts div{display:grid;gap:6px}
+@media (max-width:899px){.cs-head .label,.cs-head h1,.facts{grid-column:auto}}
+.cs .stage{border-radius:var(--r);display:flex;align-items:center;justify-content:center;gap:clamp(12px,3vw,40px);padding:clamp(32px,5vw,80px);overflow:hidden}
+.cs .stage.g{background:var(--forest)} .cs .stage.s{background:var(--mist)}
+@media (max-width:560px){.cs .stage .phone.back{display:none}.cs .stage .phone{width:60%}}
+.story{padding-block:clamp(64px,8vw,130px)}
+.story .label{grid-column:1 / span 2}
+.story .lead{grid-column:3 / span 7;font-family:var(--display);font-size:var(--s2);font-weight:500;letter-spacing:-.03em;line-height:1.08;text-wrap:balance}
+.story .body{grid-column:3 / span 6;color:var(--muted);max-width:60ch;display:grid;gap:16px}
+@media (max-width:899px){.story .label,.story .lead,.story .body{grid-column:auto}}
+.next{display:grid;gap:14px;text-decoration:none;border-top:1px solid var(--line);padding-block:clamp(56px,8vw,120px)}
+.next .t{font-family:var(--display);font-size:var(--s2);font-weight:500;letter-spacing:-.03em;line-height:1.05;transition:color .3s}
+.next:hover .t{color:var(--signal-deep)}
+
+/* real screenshots */
+.shot-stage{align-items:flex-end;padding-bottom:0!important}
+.shot-stage .phone-shot{width:min(62%,280px);margin-bottom:-12%;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:hover .shot-stage .phone-shot{transform:translateY(-8px)}
+.phone-shot{border-radius:clamp(22px,2.6vw,34px);overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(20,33,61,.08),0 40px 70px -36px rgba(20,33,61,.45);max-width:100%}
+.phone-shot img{display:block;width:100%;height:auto}
+.browser-shot{margin:0;border-radius:var(--r);overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(20,33,61,.08),0 50px 90px -50px rgba(20,33,61,.4)}
+.browser-shot .bar{display:flex;align-items:center;gap:6px;padding:12px 16px;border-bottom:1px solid var(--line);background:#fff}
+.browser-shot .bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.browser-shot .bar span{margin:0 auto;font-size:12px;color:var(--muted);background:var(--well);border-radius:99px;padding:4px 14px;max-width:60%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.browser-shot img{display:block;width:100%;height:auto}
+.browser-shot picture{display:block}
+.browser-shot figcaption{padding:16px 20px;font-size:14px;color:var(--muted);border-top:1px solid var(--line);background:#fff}
+.big-shot{margin-bottom:clamp(24px,4vw,48px)}
+.wide-shot{margin-block:clamp(56px,8vw,120px)}
+.ap{padding-block:clamp(24px,4vw,64px)}
+.ap-row{align-items:center;padding-block:clamp(48px,7vw,110px);row-gap:40px}
+.ap-text{grid-column:1 / span 5;display:grid;gap:18px;align-content:start}
+.ap-text h2{font-size:var(--s2)}
+.ap-text p{color:var(--muted);max-width:46ch}
+.ap-media{grid-column:7 / span 6;min-width:0}
+.ap-row.flip .ap-text{grid-column:8 / span 5;grid-row:1}
+.ap-row.flip .ap-media{grid-column:1 / span 6;grid-row:1}
+@media (max-width:899px){.ap-text,.ap-media,.ap-row.flip .ap-text,.ap-row.flip .ap-media{grid-column:auto;grid-row:auto}}
+.phone-pair{display:flex;justify-content:center;gap:clamp(14px,3vw,32px);background:var(--mist);border-radius:var(--r);padding:clamp(28px,5vw,64px) clamp(16px,4vw,48px);overflow:hidden;max-height:min(110vw,640px);align-items:flex-start}
+.phone-pair .phone-shot{width:min(48%,280px);flex-shrink:0}
+.phone-pair .phone-shot:only-child{width:min(70%,300px)}
+.phone-pair .offset{margin-top:12%}
+@media (max-width:600px){.phone-pair .offset{display:none}.phone-pair .phone-shot{width:min(72%,300px)}}
+.swatches{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(8px,1.4vw,14px)}
+@media (max-width:560px){.swatches small{display:none}.swatches span{font-size:12px}.swatches b{border-radius:10px 10px 10px 3px}}
+.swatches li{display:grid;gap:4px}
+.swatches b{display:block;aspect-ratio:1/1.15;border-radius:16px 16px 16px 4px;margin-bottom:8px}
+.swatches span{font-weight:500;letter-spacing:-.01em}
+.swatches small{font-size:13px;color:var(--muted);line-height:1.35}
+.details .dl{grid-column:3 / span 10;list-style:none;margin:0;padding:0;display:grid;gap:32px 48px}
+@media (min-width:760px){.details .dl{grid-template-columns:1fr 1fr}}
+@media (max-width:899px){.details .dl{grid-column:auto}}
+.dl li{display:grid;gap:8px;border-top:1px solid var(--line);padding-top:18px}
+.dl h3{font-size:var(--s1)}
+.dl p{color:var(--muted);max-width:44ch}
+
+[data-view]{animation:rise .7s cubic-bezier(.2,.7,.2,1)}
+@keyframes rise{from{transform:translateY(12px)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<header class="wrap">
+  <div class="top">
+    <a class="logo" href="#top" aria-label="hillo, home"><span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span></a>
+    <nav class="nav" aria-label="Main"><a href="#work" data-nav="work">Work</a><a class="hide-s" href="#services" data-nav="services">Services</a><a class="hide-s" href="#about" data-nav="about">About</a><a class="say" href="#contact" data-nav="contact" aria-label="Say hillo"><span aria-hidden="true">Say</span> <span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span></a></nav>
+  </div>
+</header>
+
+<!-- HOME -->
+<main data-view="home" id="top">
+  <div class="wrap">
+    <section class="grid hero">
+      <p class="label sp loc">Design studio · George, Western Cape</p>
+      <h1 aria-label="A higher view for local businesses."><span aria-hidden="true">A higher view <span class="bi">for</span> <span class="rot"><span class="rot-in">local businesses</span>.</span></span></h1>
+      <p class="sub"><span class="sr">Brands, websites and WhatsApp booking, thoughtfully designed and built fast.</span><span aria-hidden="true">Brands, <span style="white-space:nowrap">websites <a class="chip c1" href="#work" tabindex="-1" title="See the work"><span class="mini"><b></b><i></i></span></a></span> <span class="bi">and</span> WhatsApp <span style="white-space:nowrap">booking <a class="chip c2" href="#booking" tabindex="-1" title="Hillo Receptionist"><i></i><i></i></a>,</span> thoughtfully designed <span class="bi">and</span> built fast.</span></p>
+      <div class="side">
+        <p>We look at the whole business first: how it looks, how people find it and how they book. Then we design and build what it needs, to the standard big brands expect.</p>
+        <div class="ctas"><a class="btn" href="#work">See the work <span aria-hidden="true">→</span></a><a class="btn ghost say-h" href="#contact" aria-label="Say hillo"><span aria-hidden="true">Say</span> <span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span></a></div>
+      </div>
+    </section>
+
+    <section class="grid showcase" aria-label="Featured screens">
+      <div class="cap"><b>Selected screens</b><span>Hillo Receptionist and a training web app, 2026</span></div>
+      <div class="panel" aria-hidden="true">
+        <div class="phone"><div class="notch"></div>
+          <div class="wa"><div class="head">Bookings<small>Replies instantly</small></div>
+            <div class="msgs"><div class="b me">Hi, can I book for Saturday?</div><div class="b">Sure. Which time suits you?</div>
+              <div class="chips"><span>09:00</span><span class="on">10:30</span><span>14:00</span></div><div class="b">Booked: Sat, 10:30.</div></div></div></div>
+        <div class="phone"><div class="notch"></div>
+          <div class="tr"><div class="t">Leave it</div><div class="bar"><b></b></div><div class="vid"></div>
+            <p>Hold the treat in a closed hand. Wait for your dog to look away, then reward.</p></div></div>
+        <div class="phone"><div class="notch"></div>
+          <div class="wa"><div class="head">Saturday<small>4 bookings</small></div>
+            <div class="msgs start"><div class="b">09:00 · Confirmed</div><div class="b">10:30 · Confirmed</div><div class="b">14:00 · Open</div><div class="b">15:30 · Confirmed</div></div></div></div>
+      </div>
+    </section>
+
+    <section class="work" id="work">
+      <div class="grid shead">
+        <span class="label sp">Work</span>
+        <h2>Recent projects</h2>
+        <div class="aside">
+          <button class="pill" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="pill" type="button" data-filter="app" aria-pressed="false">Web apps</button>
+          <button class="pill" type="button" data-filter="web" aria-pressed="false">Websites</button>
+        </div>
+      </div>
+      <div class="grid cards">
+        <a class="card" href="#training" data-cat="app">
+          <div class="stage g" aria-hidden="true">
+            <div class="phone"><div class="notch"></div>
+              <div class="tr"><div class="t">Your first ten</div>
+                <ol><li class="on">Sit <b>Done</b></li><li class="on">Down <b>Done</b></li><li class="on">Leave it <b>Now</b></li><li>Wait</li><li>Recall</li></ol></div></div>
+            <div class="phone back"><div class="notch"></div>
+              <div class="tr"><div class="t">Leave it</div><div class="bar"><b></b></div><div class="vid"></div></div></div>
+          </div>
+          <div class="meta"><h3>A training companion <span class="bi">for</span> a dog trainer</h3><span class="arrow" aria-hidden="true">→</span></div>
+          <span class="label">Web app · In progress</span>
+        </a>
+        <a class="card" href="#booking" data-cat="web">
+          <div class="stage s shot-stage" aria-hidden="true">
+            <div class="phone-shot"><img src="img/m-hero.jpg" alt="" width="780" height="1688" loading="lazy"></div>
+          </div>
+          <div class="meta"><h3>A website <span class="bi">for</span> a WhatsApp receptionist</h3><span class="arrow" aria-hidden="true">→</span></div>
+          <span class="label">Landing page · Hillo Receptionist</span>
+        </a>
+      </div>
+    </section>
+  </div>
+
+  <section class="band" id="services">
+    <div class="wrap grid">
+      <div class="intro">
+        <span class="label sp">Services</span>
+        <h2>A clear brand, a good website <span class="bi">and</span> tools that do the work.</h2>
+        <p>Designed and built by the same person, so what you approve is what goes live.</p>
+        <div><a class="btn" href="#contact">Start a project <span aria-hidden="true">→</span></a></div>
+      </div>
+      <ul class="svc">
+        <li><h3>Brand</h3><p>A name, logo, colours and voice that look as good as your work. Ready to use everywhere, from the shopfront to WhatsApp.</p><span class="eg">For: new businesses and tired brands</span></li>
+        <li><h3>Websites</h3><p>A fast, good-looking site that says what you do and how to reach you. Built for phones first, because that's where your customers are.</p><span class="eg">For: anyone who needs to be found</span></li>
+        <li><h3>Hillo Receptionist</h3><p>Answers your WhatsApp, offers real times and confirms bookings in the chat your customers already use. You get a clean list of who's coming.</p><span class="eg">For: salons, studios, trainers, guesthouses</span></li>
+        <li><h3>Simple web apps</h3><p>Private tools for your clients, like training guides, member areas or price calculators. No app store needed.</p><span class="eg">For: services with returning clients</span></li>
+        <li><h3>Looking after it</h3><p>Hosting, updates and small changes, handled. One person to message when something needs to change.</p><span class="eg">For: everything we build</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="process" id="process">
+      <div class="grid shead"><span class="label sp">How it works</span><h2>From <span class="bi">a</span> conversation <span class="bi">to</span> launch, <span class="bi">in</span> three steps.</h2></div>
+      <ol class="grid steps">
+        <li><span class="n">01</span><h3>A conversation</h3><p>We talk about your business and what it needs. On WhatsApp, a call or over coffee.</p></li>
+        <li><span class="n">02</span><h3>Design and build</h3><p>You see real screens early and give feedback while it takes shape.</p></li>
+        <li><span class="n">03</span><h3>Launch and look after</h3><p>It goes live, and you have someone to call when something needs to change.</p></li>
+      </ol>
+    </section>
+
+    <section class="grid who">
+      <span class="label sp">Who it's for</span>
+      <p class="big">Built <span class="bi">for</span> salons, trainers, guesthouses, trades, studios <span class="bi">&amp;</span> cafés <span class="m">along the Garden Route.</span> Businesses that are good <span class="bi">at</span> what they do.</p>
+    </section>
+
+    <section class="grid about" id="about">
+      <span class="label sp">About</span>
+      <p class="lead">Hillo is run by Kev, a product designer who has spent years designing websites and apps for international brands.</p>
+      <div class="txt">
+        <p>That work taught the same thing every time. People don't want more features. They want something clear that does its one job well.</p>
+        <p>Hillo brings that standard to small businesses, starting on the Garden Route, at a price that makes sense for them.</p>
+      </div>
+    </section>
+  </div>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <span class="label sp">Contact</span>
+      <h2 aria-label="Say hillo."><span aria-hidden="true">Say <span class="wm">h<span class="i">ı</span>llo</span> <a class="chip c3" href="https://wa.me/27000000000" target="_blank" rel="noopener" tabindex="-1" title="Message on WhatsApp"><i></i><i></i><i></i></a></span></h2>
+      <p class="hi-sub">Let's take a look <span class="bi">at</span> your business. Message on WhatsApp or email, and you'll hear back from Kev.</p>
+      <div class="row">
+        <a class="btn white" href="https://wa.me/27000000000" target="_blank" rel="noopener">Message on WhatsApp <span aria-hidden="true">→</span></a>
+        <span class="em" id="em">hello@hillo.co.za</span>
+        <button type="button" data-copy="em">Copy email</button>
+      </div>
+      <p class="note" aria-live="polite" id="copied"></p>
+    </div>
+  </section>
+</main>
+
+<!-- CASE: TRAINING -->
+<main data-view="training" class="cs" hidden>
+  <div class="wrap">
+    <a class="pill" href="#work">← All work</a>
+    <div class="grid cs-head">
+      <span class="label">Web app · In progress</span>
+      <h1>A training companion <span class="bi">for</span> a dog trainer</h1>
+      <div class="facts">
+        <div><span class="label">Client</span><span>Independent dog trainer, George</span></div>
+        <div><span class="label">Scope</span><span>Brand, web app, video</span></div>
+        <div><span class="label">Status</span><span>In progress, 2026</span></div>
+      </div>
+    </div>
+    <div class="stage g" aria-hidden="true">
+      <div class="phone"><div class="notch"></div>
+        <div class="tr"><div class="t">Your first ten</div>
+          <ol><li class="on">Name game <b>Done</b></li><li class="on">Sit <b>Done</b></li><li class="on">Down <b>Done</b></li><li class="on">Leave it <b>Now</b></li><li>Wait</li><li>Recall</li></ol></div></div>
+      <div class="phone back"><div class="notch"></div>
+        <div class="tr"><div class="t">Leave it</div><div class="bar"><b></b></div><div class="vid"></div>
+          <p>Hold the treat in a closed hand. Wait for your dog to look away, then reward.</p></div></div>
+    </div>
+    <section class="grid story">
+      <span class="label sp">The problem</span>
+      <p class="lead">Clients forget the moves between sessions, and they can't practise what they can't remember.</p>
+      <div class="body"><p>The trainer visits clients at home and had no website or brand. We're building a private web app with her ten core beginner moves, each as a short clip with a few plain steps. Only clients who book sessions get access.</p></div>
+    </section>
+    <section class="grid story" style="padding-top:0">
+      <span class="label sp">The approach</span>
+      <div class="body"><p>Calm, neutral and grown-up, with a forest green accent. It should feel like a professional service, because it is one. A web app rather than an app store listing, so clients open a link and start.</p></div>
+    </section>
+    <a class="next" href="#booking"><span class="label">Next project</span><span class="t">A website <span class="bi">for</span> a WhatsApp receptionist →</span></a>
+  </div>
+</main>
+
+<!-- CASE: BOOKING -->
+<main data-view="booking" class="cs" hidden>
+  <div class="wrap">
+    <a class="pill" href="#work">← All work</a>
+    <div class="grid cs-head">
+      <span class="label">Landing page · Preview, 2026</span>
+      <h1>A website <span class="bi">for</span> a WhatsApp receptionist</h1>
+      <div class="facts">
+        <div><span class="label">Product</span><span>Hillo Receptionist (built under the working name Front Desk)</span></div>
+        <div><span class="label">For</span><span>Small businesses in George, Mossel Bay and surrounds</span></div>
+        <div><span class="label">Scope</span><span>Positioning, copy, design, front-end, motion</span></div>
+        <div><span class="label">Built</span><span>One static page, no framework</span></div>
+      </div>
+    </div>
+
+    <figure class="browser-shot big-shot">
+      <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>kevinirwin.co.za/bookings</span></div>
+      <img src="img/d-hero.jpg" alt="Front Desk landing page hero: 'Meet your new receptionist', with a WhatsApp chat where a plumbing business books a geyser repair." width="1800" height="813">
+    </figure>
+
+    <section class="grid story">
+      <span class="label sp">The brief</span>
+      <p class="lead">Explain a product nobody has seen before, to a busy owner skimming on their phone, <span class="bi">in</span> a few seconds.</p>
+      <div class="body">
+        <p>The product answers a business's WhatsApp, books jobs into their calendar and speaks as the business, in English or Afrikaans. It was built as Front Desk and is now Hillo Receptionist. The big players in this space are global and self-serve. This one is local and done for you, so the page had to feel personal and trustworthy without faking it.</p>
+        <p>That ruled out the usual shortcuts: no stock photos, no logo walls, no star ratings and no invented numbers. The product had to explain itself.</p>
+      </div>
+    </section>
+
+    <section class="ap">
+      <div class="grid ap-row">
+        <div class="ap-text">
+          <span class="label sp">Show it working</span>
+          <h2>The conversation <span class="bi">is</span> the hero.</h2>
+          <p>Instead of a headline about AI, the first thing you see is a real-feeling chat. A customer with a leaking geyser at 21:47 gets a safety tip, two time slots and a confirmed booking. Small captions under the messages show the work you can't see, like "Booked into your calendar".</p>
+        </div>
+        <div class="ap-media phone-pair">
+          <div class="phone-shot"><img src="img/m-hero.jpg" alt="Front Desk hero on a phone, showing the headline and the start of the plumbing chat." width="780" height="1688" loading="lazy"></div>
+        </div>
+      </div>
+
+      <div class="grid ap-row flip">
+        <div class="ap-text">
+          <span class="label sp">Colour with rules</span>
+          <h2>Every colour has <span class="bi">one</span> job.</h2>
+          <p>WhatsApp green only ever means "this is WhatsApp", so it lives on customer bubbles and nowhere else. Tangerine is the one thing to do, so it's only on the main button. Everything else is a calm, deep blue. Every text colour passes accessibility contrast, including the small grey captions.</p>
+        </div>
+        <div class="ap-media">
+          <ul class="swatches">
+            <li><b style="background:#0A1B3D"></b><span>Ink</span><small>Headings and body</small></li>
+            <li><b style="background:#1F4FD8"></b><span>True blue</span><small>Links, ticks, focus</small></li>
+            <li><b style="background:#FF8A3D"></b><span>Tangerine</span><small>Main button only</small></li>
+            <li><b style="background:#D9FDD3;box-shadow:inset 0 0 0 1px #c9eac3"></b><span>WhatsApp</span><small>Customer bubbles only</small></li>
+            <li><b style="background:#F6F8FC;box-shadow:inset 0 0 0 1px #DCE3EF"></b><span>Canvas</span><small>Page background</small></li>
+          </ul>
+        </div>
+      </div>
+
+      <figure class="browser-shot wide-shot">
+        <picture><source media="(max-width:600px)" srcset="img/m-keeps.jpg" width="780" height="1272"><img src="img/d-keeps.jpg" alt="Section 'Customers type how they talk': a message full of typos with two questions and a change of day, each highlighted and explained." width="1800" height="602" loading="lazy"></picture>
+        <figcaption>Real customers don't write neatly. Two questions, a change of plan and the odd typo, highlighted in two colours and explained in place.</figcaption>
+      </figure>
+
+      <div class="grid ap-row">
+        <div class="ap-text">
+          <span class="label sp">Local by default</span>
+          <h2>Speaks English. <span class="bi">Praat</span> Afrikaans.</h2>
+          <p>The same Saturday haircut enquiry, side by side in both languages. It's the page's one deep-blue band, so it lands as a moment rather than another feature.</p>
+        </div>
+        <div class="ap-media phone-pair">
+          <div class="phone-shot"><img src="img/m-language.jpg" alt="Language band on a phone: English and Afrikaans chats." width="780" height="1688" loading="lazy"></div>
+          <div class="phone-shot offset"><img src="img/m-keeps.jpg" alt="Customers type how they talk section on a phone." width="780" height="1272" loading="lazy"></div>
+        </div>
+      </div>
+
+      <figure class="browser-shot wide-shot">
+        <picture><source media="(max-width:600px)" srcset="img/m-steps.jpg" width="780" height="1688"><img src="img/d-steps.jpg" alt="Live in four steps: see it in action, we learn your business, we switch it on, you get back to work." width="1800" height="944" loading="lazy"></picture>
+        <figcaption>Done for you, in four steps. The last step is the outcome they're paying for, so it's the only one filled in.</figcaption>
+      </figure>
+    </section>
+
+    <section class="grid story details">
+      <span class="label sp">Details</span>
+      <ul class="dl">
+        <li><h3>Motion reveals, never gates</h3><p>Chats type themselves out and headings come into focus as you scroll. Turn motion off and the whole page is still there, complete.</p></li>
+        <li><h3>Honest <span class="bi">by</span> design</h3><p>Every chat is labelled as an example, and the assistant says it's automated in its first reply.</p></li>
+        <li><h3>Light enough <span class="bi">for</span> rural data</h3><p>One small file with no framework, so it loads fast on a weak signal.</p></li>
+        <li><h3>Three ways in, no more</h3><p>WhatsApp first, a short form as backup. Not a call to action in every section.</p></li>
+      </ul>
+    </section>
+
+    <a class="next" href="#training"><span class="label">Next project</span><span class="t">A training companion <span class="bi">for</span> a dog trainer →</span></a>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="grid fcols">
+      <p class="lead"><b>A higher view.</b> Brands, websites <span class="bi">&amp;</span> tools <span class="bi">for</span> businesses on the Garden Route.</p>
+      <div><span class="label">Get in touch</span><ul><li><a href="#contact">Say hillo</a></li><li><a href="https://wa.me/27000000000" target="_blank" rel="noopener">WhatsApp</a></li></ul></div>
+      <div><span class="label">See more</span><ul><li><a href="#work">Work</a></li><li><a href="#services">Services</a></li><li><a href="#process">How it works</a></li><li><a href="#about">About</a></li></ul></div>
+    </div>
+    <a class="sign" href="#top" aria-label="hillo, back to top"><span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span></a>
+    <div class="fbase"><span>Hillo · George, Western Cape</span><span>© 2026 Hillo</span></div>
+  </div>
+</footer>
+
+<script>
+/* cycling business type; the site chip takes each business's colour */
+(function(){
+  const rot=document.querySelector('.rot'),inner=rot&&rot.querySelector('.rot-in');
+  if(!rot||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const words=['salons','dog trainers','guesthouses','trades','cafés','studios'];
+  const tints=['#b77a7a','#2f4a3a','#b8925e','#4a5568','#7a5235','#6b4e71'];
+  const chip=document.querySelector('.c1');
+  let i=0;
+  rot.classList.add('anim');inner.textContent=words[0];
+  if(chip)chip.style.setProperty('--chip',tints[0]);
+  setInterval(()=>{
+    if(document.hidden)return;
+    i=(i+1)%words.length;
+    inner.classList.add('out');
+    setTimeout(()=>{
+      inner.textContent=words[i];
+      if(chip){chip.style.setProperty('--chip',tints[i]||'');chip.classList.remove('swap');void chip.offsetWidth;chip.classList.add('swap')}
+      inner.classList.remove('out');inner.classList.add('pre');
+      requestAnimationFrame(()=>requestAnimationFrame(()=>inner.classList.remove('pre')));
+    },450);
+  },2800);
+})();
+
+/* views */
+const views=document.querySelectorAll('[data-view]'),cases=['training','booking'];
+const navLinks=document.querySelectorAll('[data-nav]');
+function setNav(id){navLinks.forEach(a=>{if(a.dataset.nav===id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}
+function route(){
+  const h=location.hash.slice(1),v=cases.includes(h)?h:'home';
+  views.forEach(el=>el.hidden=el.dataset.view!==v);
+  if(v!=='home'){setNav('work');scrollTo(0,0)}
+  else if(!h||h==='top'){scrollTo(0,0)}
+  else{const t=document.getElementById(h);t&&t.scrollIntoView()}
+}
+addEventListener('hashchange',route);route();
+
+/* the dot rises above the section in view */
+if('IntersectionObserver' in window){
+  const seen=new Map();
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>seen.set(e.target.id,e.isIntersecting?e.intersectionRatio:0));
+    if(!document.querySelector('[data-view="home"]').hidden){
+      let best=null,score=0;seen.forEach((r,id)=>{if(r>score){score=r;best=id}});
+      setNav(best);
+    }
+  },{rootMargin:'-35% 0px -45% 0px',threshold:[0,.01,.25,.5,1]});
+  ['work','services','about','contact'].forEach(id=>{const el=document.getElementById(id);el&&io.observe(el)});
+}
+
+document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{
+  const f=b.dataset.filter;
+  document.querySelectorAll('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  document.querySelectorAll('.card').forEach(c=>c.hidden=!(f==='all'||c.dataset.cat===f));
+}));
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{
+  const el=document.getElementById(b.dataset.copy),out=document.getElementById('copied'),txt=el.textContent.trim();
+  const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);out.textContent='Selected. Copy it from your device.'};
+  try{navigator.clipboard.writeText(txt).then(()=>out.textContent='Copied '+txt,sel)}catch(e){sel()}
+}));
+</script>
+
+</body>
+</html>
