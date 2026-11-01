@@ -119,6 +119,8 @@
   .btn:active { transform: translateY(1px); }
   .btn svg { width: 1.2rem; height: 1.2rem; }
   .btn-sm { min-height: 2.6rem; padding: 0 1.1rem; font-size: 0.92rem; }
+  /* Small phones: the header CTA keeps its full label but drops the icon so it fits beside the lockup */
+  @media (max-width: 420px) { #hdr-cta { padding: 0 0.95rem; } #hdr-cta svg { display: none; } }
   .btn-primary { background: var(--amber); color: var(--ink); box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 10px 24px -12px rgba(242,113,31,.85); }
   .btn-primary:hover { background: var(--amber-hover); box-shadow: inset 0 1px 0 rgba(255,255,255,.4), 0 14px 28px -12px rgba(242,113,31,.9); }
   .btn-primary:active { background: var(--amber-press); }
@@ -576,7 +578,7 @@
     <nav class="nav" aria-label="Main">
       <a href="#how">How it works</a>
       <a href="#faq">Questions</a>
-      <a class="btn btn-ghost btn-sm" href="#demo">Try it</a>
+      <a class="btn btn-ghost btn-sm js-wa" id="hdr-cta" href="#demo"><svg class="i"><use href="#i-wa"/></svg>Try it on WhatsApp</a>
     </nav>
   </div>
 </header>
@@ -872,7 +874,7 @@
         <ul>
           <li><a href="#how">How it works</a></li>
           <li><a href="#faq">Questions</a></li>
-          <li><a href="#demo">Try it</a></li>
+          <li><a class="js-wa" href="#demo">Try it on WhatsApp</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -1082,6 +1084,17 @@
     });
     tabs.forEach((t, j) => { panels[j].hidden = j !== 0; });
     pill.style.transition = "none"; movePill(); void pill.offsetWidth; pill.style.transition = "";
+  })();
+
+  /* Header CTA: outline while the hero's orange button is on screen, orange once it has scrolled away,
+     so there's only ever one orange button in view */
+  (function () {
+    const hdr = document.getElementById("hdr-cta"), hero = document.querySelector(".hero .btn-primary");
+    if (!hdr || !hero || !("IntersectionObserver" in window)) return;
+    new IntersectionObserver(([e]) => {
+      const away = !e.isIntersecting && e.boundingClientRect.top < 0;
+      hdr.classList.toggle("btn-primary", away); hdr.classList.toggle("btn-ghost", !away);
+    }).observe(hero);
   })();
 
 </script>
