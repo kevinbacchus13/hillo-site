@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hillo Receptionist | WhatsApp bookings for George, Mossel Bay and surrounds</title>
-<meta name="description" content="Hillo Receptionist answers the WhatsApps you miss while you're with a client. It replies like a person, answers questions and books jobs into your calendar, in English or Afrikaans. For small businesses in George, Mossel Bay and surrounds.">
+<title>Hillo Receptionist | WhatsApp bookings for South African small businesses</title>
+<meta name="description" content="Hillo Receptionist answers the WhatsApps you miss while you're with a client. It replies like a person, answers questions and books jobs into your calendar, in English or Afrikaans. Made in George, for small businesses across South Africa.">
 <meta name="theme-color" content="#F6F8FC">
 <meta name="color-scheme" content="light">
 <!-- Draft preview: keep out of search until launch. Remove at launch. -->
@@ -136,9 +136,6 @@
     isolation: isolate;
     background-color: var(--canvas);
     /* Aurora: the original blue-to-violet tint across the top, plus a glow that lives behind the chat (see .aura) */
-    background-image:
-      radial-gradient(70% 60% at 0% 0%, #CCDAFF 0%, rgba(204,218,255,0) 60%),
-      radial-gradient(50% 50% at 100% 0%, #E6E0FF 0%, rgba(230,224,255,0) 70%);
     box-shadow: inset 0 -1px 0 rgba(20,33,61,.06);   /* clean edge into the white marquee band */
   }
   .hero-grid { display: grid; gap: 3.5rem; position: relative; z-index: 1; }
@@ -182,18 +179,27 @@
      It belongs to the chat, so it follows it on every layout and points the eye at the product. */
   .aura { position: absolute; z-index: -1; pointer-events: none; }
   .chat .aura { inset: -18% -22% -14% -22%; }
-  .blob { position: absolute; border-radius: 50%; filter: blur(48px); }
-  .aura .b1 { width: 60%; height: 58%; left: 4%; top: 6%; background: #8EADFF; opacity: .85; }
-  .aura .b2 { width: 56%; height: 56%; right: 2%; top: 20%; background: #B9A3FF; opacity: .85; }
-  .aura .b3 { width: 50%; height: 48%; left: 24%; bottom: 2%; background: #8FDDFF; opacity: .75; }
+  /* Each glow is a radial gradient, not a blurred shape: same softness, no per-frame blur cost on budget phones */
+  .blob { position: absolute; border-radius: 50%; scale: 1.45; background: radial-gradient(closest-side, var(--c) 0%, var(--c) 28%, transparent 100%); }
+  .aura .b1 { width: 60%; height: 58%; left: 4%; top: 6%; --c: #8EADFF; opacity: .85; }
+  .aura .b2 { width: 56%; height: 56%; right: 2%; top: 20%; --c: #B9A3FF; opacity: .85; }
+  .aura .b3 { width: 50%; height: 48%; left: 24%; bottom: 2%; --c: #8FDDFF; opacity: .75; }
   /* Very slow drift: alive, never noticed. Paused off screen; still with reduced motion. */
-  @keyframes drift1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(6%, 5%) scale(1.08); } }
-  @keyframes drift2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-7%, 4%) scale(.94); } }
-  @keyframes drift3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(4%, -6%) scale(1.06); } }
+  /* Slow but visible: each blob wanders a loose loop (not a back-and-forth), on co-prime
+     durations so the three never line up and the wash never repeats the same picture. */
+  @keyframes drift1 { 0%,100% { transform: translate(0,0) scale(1); } 25% { transform: translate(18%, 10%) scale(1.12); } 50% { transform: translate(8%, 24%) scale(.96); } 75% { transform: translate(-10%, 8%) scale(1.06); } }
+  @keyframes drift2 { 0%,100% { transform: translate(0,0) scale(1); } 25% { transform: translate(-16%, 14%) scale(.92); } 50% { transform: translate(-24%, -6%) scale(1.1); } 75% { transform: translate(-6%, -14%) scale(1); } }
+  @keyframes drift3 { 0%,100% { transform: translate(0,0) scale(1); } 25% { transform: translate(14%, -16%) scale(1.08); } 50% { transform: translate(-12%, -22%) scale(.95); } 75% { transform: translate(-18%, 4%) scale(1.1); } }
+  @keyframes tint { 0%,100% { transform: translate(0,0); } 50% { transform: translate(6%, 4%); } }
   .motion .blob { will-change: transform; }
-  .motion .blob.b1 { animation: drift1 26s ease-in-out infinite; }
-  .motion .blob.b2 { animation: drift2 31s ease-in-out infinite; }
-  .motion .blob.b3 { animation: drift3 23s ease-in-out infinite; }
+  .motion .blob.b1 { animation: drift1 37s ease-in-out infinite; }
+  .motion .blob.b2 { animation: drift2 43s ease-in-out infinite; }
+  .motion .blob.b3 { animation: drift3 31s ease-in-out infinite; }
+  /* The hero's top tint breathes too, much slower than the blobs, so the whole wash shifts */
+  .hero::before { content: ""; position: absolute; inset: -10%; z-index: -2; pointer-events: none;
+    background-image: radial-gradient(58% 50% at 8.3% 8.3%, #CCDAFF 0%, rgba(204,218,255,0) 60%), radial-gradient(42% 42% at 91.7% 8.3%, #E6E0FF 0%, rgba(230,224,255,0) 70%); }
+  .motion .hero::before { animation: tint 60s ease-in-out infinite; will-change: transform; }
+  .motion .off::before { animation-play-state: paused; }
   .motion .off .blob { animation-play-state: paused; }
   @media (min-width: 960px) { .chat { justify-self: end; } }
 
@@ -474,6 +480,17 @@
     background-color: #F1F4FD;
     background-image: radial-gradient(70% 70% at 0% 0%, #CCDAFF 0%, rgba(204,218,255,0) 60%);
   }
+  /* Phones: the panel becomes the band itself (edge to edge, no radius), so the form is the
+     only box and gets the full gutter width. Desktop keeps the contained banner. */
+  @media (max-width: 719px) {
+    .closing { padding-block: 0; }
+    .closing > .wrap { width: 100%; }
+    .closing-panel { border-radius: 0; padding: 4rem 1.25rem 3.5rem; gap: 2.25rem; }
+    .closing-panel form { padding: 1.5rem 1.25rem; }
+    .closing-panel .b1 { width: 80%; height: 40%; }
+    .closing-panel .b2 { width: 80%; height: 45%; top: 30%; }
+    .closing-panel .b3 { width: 75%; height: 35%; }
+  }
   /* Same aurora as the hero, so the page opens and closes on it */
   .closing-panel .aura { inset: 0; }
   .closing-panel .b1 { width: 45%; height: 70%; left: -5%; top: -10%; opacity: .55; }
@@ -516,7 +533,8 @@
   .foot-parent a { text-decoration: underline; text-underline-offset: 3px; }
   .foot-brand p { margin: 0.75rem 0 0; max-width: 24rem; }
   .foot-col h3 { margin: 0 0 0.9rem; font-size: 0.95rem; color: #fff; font-weight: 600; }
-  .foot-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+  .foot-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+  .foot-col a { display: inline-block; padding: 0.7rem 0; }   /* 44px tap rows on phones */
   .foot-base { margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.14); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem; font-size: 0.88rem; }
 
   /* =========================================================
@@ -574,7 +592,7 @@
   <section class="hero" aria-labelledby="hero-title">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="tag on-wash loc"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>George, Mossel Bay and surrounds</p>
+        <p class="tag on-wash loc"><svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>Made in George, for South African businesses</p>
         <h1 class="headline" id="hero-title">
           <span class="line">Meet your new</span>
           <span class="sr-only">receptionist</span>
@@ -707,7 +725,7 @@
       </ol>
       <div class="how-cta">
         <p>Start with step one.</p>
-        <a class="btn btn-primary js-wa" href="#demo"><svg class="i"><use href="#i-wa"/></svg>Book your demo</a>
+        <a class="btn btn-primary js-wa" href="#demo"><svg class="i"><use href="#i-wa"/></svg>Book a demo on WhatsApp</a>
       </div>
     </div>
   </section>
@@ -802,7 +820,7 @@
         </details>
         <details>
           <summary>What happens to my customers' information?</summary>
-          <p>It's used only to answer and book. See the <a href="https://kevinirwin.co.za/privacy.html">privacy policy</a>.</p>
+          <p>It's used only to answer and book. See the <a href="/privacy/">privacy policy</a>.</p>
         </details>
       </div>
     </div>
@@ -841,7 +859,7 @@
     <div class="foot-grid">
       <div class="foot-brand">
         <a class="wordmark" href="#top" aria-label="Hillo Receptionist, back to top"><span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span><span class="desc" aria-hidden="true">receptionist</span></a>
-        <p>A WhatsApp assistant that knows your business. For small businesses in George, Mossel Bay and surrounds.</p>
+        <p>A WhatsApp assistant that knows your business. Made in George, for small businesses across South Africa.</p>
         <p class="foot-parent">A <a href="/">Hillo</a> product.</p>
       </div>
       <div class="foot-col">
@@ -855,7 +873,7 @@
       <div class="foot-col">
         <h3>Legal</h3>
         <ul>
-          <li><a href="https://kevinirwin.co.za/privacy.html">Privacy policy</a></li>
+          <li><a href="/privacy/">Privacy policy</a></li>
         </ul>
       </div>
     </div>
@@ -925,13 +943,15 @@
             await wait(li.classList.contains("cust") ? 700 : 450);
           }
         }
-        /* Loops, with a long hold on "Booked into your calendar." so the payoff lands each time */
+        /* Plays twice, with a long hold on "Booked into your calendar.", then rests on it:
+           enough to show it working, without movement in the corner while someone reads */
         async function loop() {
           await fontsReady;
           thread.style.height = thread.offsetHeight + "px";   // reserve the final size: no layout jump
           chat.classList.remove("pre");
-          for (;;) {
+          for (let run = 1; run <= 2; run++) {
             await play();
+            if (run === 2) break;
             await wait(5000); await whenVisible();
             thread.classList.add("fading"); await wait(500);
           }
@@ -1062,7 +1082,7 @@
       status.className = "form-status";
       const missing = [...form.querySelectorAll("[required]")].find(f => !f.value.trim());
       if (missing) {
-        status.textContent = "Add your " + missing.labels[0].textContent.toLowerCase() + " so we can get back to you.";
+        status.textContent = "Add your " + missing.labels[0].textContent.toLowerCase().replace(/^your /, "") + " so we can get back to you.";
         status.classList.add("err"); missing.focus(); return;
       }
       const btn = form.querySelector("button[type=submit]");
