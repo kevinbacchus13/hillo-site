@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hillo Receptionist | WhatsApp bookings for George, Mossel Bay and surrounds</title>
-<meta name="description" content="An assistant that answers your WhatsApp, books jobs into your calendar and speaks as your business, in English or Afrikaans. For small businesses in George, Mossel Bay and surrounds.">
+<meta name="description" content="Hillo Receptionist answers the WhatsApps you miss while you're with a client. It replies like a person, answers questions and books jobs into your calendar, in English or Afrikaans. For small businesses in George, Mossel Bay and surrounds.">
 <meta name="theme-color" content="#F6F8FC">
 <meta name="color-scheme" content="light">
 <!-- Draft preview: keep out of search until launch. Remove at launch. -->
@@ -16,7 +16,7 @@
 <link rel="canonical" href="https://hillo.co.za/receptionist/">
 <meta property="og:url" content="https://hillo.co.za/receptionist/">
 <meta property="og:title" content="Hillo Receptionist · Answers your WhatsApp 24/7">
-<meta property="og:description" content="It answers your WhatsApp and books jobs into your calendar. 24/7, in English or Afrikaans. For small businesses in George, Mossel Bay and surrounds.">
+<meta property="og:description" content="Answers the WhatsApps you miss while you're with a client, and books jobs into your calendar. 24/7, in English or Afrikaans.">
 <meta property="og:image" content="https://hillo.co.za/receptionist/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -355,6 +355,16 @@
      Language band: the one deep-blue band. White text only.
      ========================================================= */
   .language { background: var(--ink); color: #fff; }
+  /* Not a menu bot: claims as a ticked list, same tick as the chat captions = "this is done for you" */
+  .notbot .wrap { display: grid; gap: 2.5rem; align-items: start; }
+  @media (min-width: 900px) { .notbot .wrap { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 5rem; } }
+  .diffs { list-style: none; margin: 0; padding: 0; display: grid; }
+  .diffs li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 1rem; padding: 1.15rem 0; border-top: 1px solid var(--line); }
+  .diffs li:last-child { border-bottom: 1px solid var(--line); }
+  .d-tick { width: 1.9rem; height: 1.9rem; border-radius: 50%; display: grid; place-items: center; background: var(--blue-soft); color: var(--blue); margin-top: .1rem; }
+  .d-tick svg { width: 1rem; height: 1rem; }
+  .diffs h3 { margin: 0 0 .15rem; font-size: 1.15rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.3; }
+  .diffs p { margin: 0; color: var(--ink-2); }
   .language .h2 { max-width: none; }
   .language .h2 span { display: block; }
   .language .h2 span + span { color: var(--blue-soft); }
@@ -549,7 +559,7 @@
 
 <header class="site-header" id="site-header">
   <div class="wrap">
-    <a class="wordmark" href="#top" aria-label="Hillo Receptionist, home"><span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span><span class="desc" aria-hidden="true">Receptionist</span></a>
+    <a class="wordmark" href="#top" aria-label="Hillo Receptionist, home"><span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span><span class="desc" aria-hidden="true">receptionist</span></a>
     <nav class="nav" aria-label="Main">
       <a href="#how">How it works</a>
       <a href="#faq">Questions</a>
@@ -570,7 +580,7 @@
           <span class="sr-only">receptionist</span>
           <span class="line" aria-hidden="true"><span class="role" id="role"><span class="role-text" id="role-text">receptionist</span></span></span>
         </h1>
-        <p class="lede">It answers your WhatsApp and books jobs into your calendar. <span class="nowrap">24/7, in English or Afrikaans.</span></p>
+        <p class="lede">How many WhatsApps do you miss while you're with a client? Hillo Receptionist answers them for you. <span class="nowrap">24/7, in English or Afrikaans.</span></p>
         <div class="hero-actions">
           <a class="btn btn-primary js-wa" href="#demo"><svg class="i"><use href="#i-wa"/></svg>Chat to us on WhatsApp</a>
           <a class="btn btn-ghost" href="#how">See how it works</a>
@@ -611,7 +621,7 @@
     <div class="wrap">
       <p class="tag">Always on</p>
       <h2 class="h2" id="tasks-title" data-focus>Every message gets a reply. Even when you're busy.</h2>
-      <p class="sub" data-focus>Your WhatsApp keeps working while you do.</p>
+      <p class="sub" data-focus>It replies like a person, answers questions and books jobs straight into your calendar. If something needs you, it sends you a message.</p>
       <ul class="tasks">
         <li><span class="icon-tile"><svg class="i"><use href="#i-chat"/></svg></span><h3>Answers questions</h3><p>Prices, hours, areas. In your words.</p></li>
         <li><span class="icon-tile"><svg class="i"><use href="#i-cal"/></svg></span><h3>Books jobs</h3><p>Straight into your calendar.</p></li>
@@ -631,13 +641,30 @@
       <figure class="float-chat" data-arrive aria-label="Example: one messy message with a new question and a change of day, both handled in one reply">
         <ol class="thread">
           <li class="turn cust"><p class="msg">ok thursday 2pm works. <mark class="hl-new">wait do u also do pool pumps??</mark> and <mark class="hl-change">can we make it friday rather</mark>, sorry<time>18:12</time></p><span class="ava-cust" aria-hidden="true"><svg class="i"><use href="#i-user"/></svg></span></li>
-          <li class="turn biz" style="--i:1"><p class="msg">No problem! <mark class="hl-new">Yes, we repair and replace pool pumps.</mark> <mark class="hl-change">Friday at 14:00 is open, so you're moved to then.</mark> Should we look at the pump on the same visit?<time>18:12</time></p></li>
+          <li class="turn biz" style="--i:1"><p class="msg">No problem. <mark class="hl-new">Yes, we repair and replace pool pumps.</mark> <mark class="hl-change">Friday at 14:00 is open, so you're moved to then.</mark> Should we look at the pump on the same visit?<time>18:12</time></p></li>
           <li class="caps" style="--i:2">
             <p class="cap"><span class="sw new" aria-hidden="true"><svg><use href="#i-tick"/></svg></span>New question answered</p>
             <p class="cap"><span class="sw change" aria-hidden="true"><svg><use href="#i-tick"/></svg></span>Moved to Friday 14:00</p>
           </li>
         </ol>
       </figure>
+    </div>
+  </section>
+
+  <!-- ===== Not a menu bot ===== -->
+  <section class="band notbot" aria-labelledby="notbot-title">
+    <div class="wrap">
+      <div>
+        <h2 class="h2" id="notbot-title" data-focus>Not another menu bot.</h2>
+        <p class="sub" data-focus>Cheap WhatsApp bots make customers press 1 for bookings and 2 for prices. Hillo Receptionist reads what they actually wrote.</p>
+      </div>
+      <ul class="diffs">
+        <li><span class="d-tick" aria-hidden="true"><svg><use href="#i-tick"/></svg></span><div><h3>Understands what they mean</h3><p>Typos, two questions at once, a change of plan.</p></div></li>
+        <li><span class="d-tick" aria-hidden="true"><svg><use href="#i-tick"/></svg></span><div><h3>Answers like your receptionist</h3><p>Your prices, hours and areas, in plain words.</p></div></li>
+        <li><span class="d-tick" aria-hidden="true"><svg><use href="#i-tick"/></svg></span><div><h3>Finishes the booking</h3><p>Not just a reply. The job goes straight into your calendar.</p></div></li>
+        <li><span class="d-tick" aria-hidden="true"><svg><use href="#i-tick"/></svg></span><div><h3>Nothing for you to build</h3><p>No menus, no flows, no settings. We set it up and look after it.</p></div></li>
+        <li><span class="d-tick" aria-hidden="true"><svg><use href="#i-tick"/></svg></span><div><h3>Honest about what it is</h3><p>It tells customers it's an assistant, and hands them to you when they need you.</p></div></li>
+      </ul>
     </div>
   </section>
 
@@ -652,14 +679,14 @@
           <figcaption class="chat-label">English</figcaption>
           <ol class="thread">
             <li class="turn cust"><p class="msg">Morning, are you open on Saturdays for a haircut?<time>07:58</time></p><span class="ava-cust" aria-hidden="true"><svg class="i"><use href="#i-user"/></svg></span></li>
-            <li class="turn biz" style="--i:1"><p class="msg">Morning! Yes, we're open 08:00 to 13:00 on Saturdays. We have 09:30 or 11:00 free. What time would you prefer?<time>07:58</time></p></li>
+            <li class="turn biz" style="--i:1"><p class="msg">Morning. Yes, we're open 08:00 to 13:00 on Saturdays. We have 09:30 or 11:00 free. What time would you prefer?<time>07:58</time></p></li>
           </ol>
         </figure>
         <figure class="float-chat" data-arrive style="--d:.9s" lang="af" aria-label="Voorbeeld in Afrikaans: 'n salonkliënt vra oor Saterdag-haarsny">
           <figcaption class="chat-label" lang="en">Afrikaans</figcaption>
           <ol class="thread">
             <li class="turn cust"><p class="msg">Môre, is julle Saterdae oop vir ’n haarsny?<time>07:59</time></p><span class="ava-cust" aria-hidden="true"><svg class="i"><use href="#i-user"/></svg></span></li>
-            <li class="turn biz" style="--i:1"><p class="msg">Môre! Ja, Saterdae is ons van 08:00 tot 13:00 oop. Ons het nog plek om 09:30 of 11:00. Hoelaat sal jy verkies om te kom?<time>07:59</time></p></li>
+            <li class="turn biz" style="--i:1"><p class="msg">Môre. Ja, Saterdae is ons van 08:00 tot 13:00 oop. Ons het nog plek om 09:30 of 11:00. Hoelaat sal jy verkies om te kom?<time>07:59</time></p></li>
           </ol>
         </figure>
       </div>
@@ -728,7 +755,7 @@
             <figcaption class="chat-label">Live in the chat</figcaption>
             <ol class="thread">
               <li class="turn cust"><p class="msg">Can I order a chocolate cake for Saturday?<time>09:14</time></p><span class="ava-cust" aria-hidden="true"><svg class="i"><use href="#i-user"/></svg></span></li>
-              <li class="turn biz" style="--i:1"><p class="msg">Yes! A 20&nbsp;cm chocolate cake is R320. What name should it be under?<time>09:14</time></p></li>
+              <li class="turn biz" style="--i:1"><p class="msg">Yes, a 20&nbsp;cm chocolate cake is R320. What name should it be under?<time>09:14</time></p></li>
               <li class="status" style="--i:2"><svg aria-hidden="true"><use href="#i-tick"/></svg>Order details taken</li>
             </ol>
           </figure>
@@ -759,11 +786,11 @@
         </details>
         <details>
           <summary>What if a customer needs to speak to me?</summary>
-          <p>The assistant tells them you'll be in touch and lets you know.</p>
+          <p>It tells them you'll be in touch and lets you know.</p>
         </details>
         <details>
           <summary>Do customers know it's automated?</summary>
-          <p>Yes. It says so in its first reply.</p>
+          <p>Yes. It says it's an assistant in its first reply.</p>
         </details>
         <details>
           <summary>What calendar does it use?</summary>
@@ -813,7 +840,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-brand">
-        <a class="wordmark" href="#top" aria-label="Hillo Receptionist, back to top"><span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span><span class="desc" aria-hidden="true">Receptionist</span></a>
+        <a class="wordmark" href="#top" aria-label="Hillo Receptionist, back to top"><span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span><span class="desc" aria-hidden="true">receptionist</span></a>
         <p>A WhatsApp assistant that knows your business. For small businesses in George, Mossel Bay and surrounds.</p>
         <p class="foot-parent">A <a href="/">Hillo</a> product.</p>
       </div>
