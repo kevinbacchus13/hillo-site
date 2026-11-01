@@ -251,6 +251,9 @@
   @keyframes arrive { from { opacity: 0; transform: translateY(10px) scale(.92); } to { opacity: 1; transform: none; } }
   .pop { animation: arrive .3s var(--pop) both; }
   .thread.fading { opacity: 0; transition: opacity .45s ease; }
+  /* The business name fades with its chat, so the swap to the next example is never seen mid-change */
+  .chat .chat-who { transition: opacity .45s ease; }
+  .chat:has(> .thread.fading) .chat-who { opacity: 0; }
   .turn.biz.pop { transform-origin: left bottom; }
   .turn.cust.pop { transform-origin: right bottom; }
   .motion .chat.pre .thread > * { visibility: hidden; }
@@ -605,11 +608,11 @@
         </div>
       </div>
 
-      <figure class="chat pre" id="hero-chat" aria-label="Example chat: a customer reports a leaking geyser at 21:47 and gets booked for 08:30 the next morning">
+      <figure class="chat pre" id="hero-chat" aria-label="Example chats: a plumber, a physio and a guesthouse each answer a customer and book them in">
         <div class="aura" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
         <div class="chat-who" aria-hidden="true">
-          <span class="ava-biz">O</span>
-          <span><b>Outeniqua Plumbing</b><small>Example chat</small></span>
+          <span class="ava-biz" id="hero-ava">O</span>
+          <span><b id="hero-biz">Outeniqua Plumbing</b><small>Example chat</small></span>
         </div>
         <ol class="thread" id="hero-thread">
           <li class="turn cust"><p class="msg">Hi, my geyser is leaking from the bottom. Can someone come out?<time>21:47</time></p><span class="ava-cust" aria-hidden="true"><svg class="i"><use href="#i-user"/></svg></span></li>
@@ -619,6 +622,21 @@
           <li class="turn biz"><p class="msg">You're booked for tomorrow at 08:30, 14 York St. See you then.<time>21:48</time></p></li>
           <li class="cap"><svg aria-hidden="true"><use href="#i-tick"/></svg>Booked into your calendar.</li>
         </ol>
+        <!-- More scenarios for the hero to cycle through. Without JS only the plumber shows. -->
+        <template data-biz="Kingfisher Physio" data-ava="K">
+          <li class="turn cust"><p class="msg">Hi, I hurt my back lifting boxes. Can someone see me this week?<time>19:12</time></p><span class="ava-cust" aria-hidden="true"><svg class="i"><use href="#i-user"/></svg></span></li>
+          <li class="turn biz"><p class="msg">Hi, this is Kingfisher Physio's automated assistant. Sorry about your back. We can see you Thursday at 10:15 or Friday at 16:00.<time>19:12</time></p></li>
+          <li class="turn cust"><p class="msg">Thursday please. Sam Botha<time>19:13</time></p><span class="ava-cust" aria-hidden="true"><svg class="i"><use href="#i-user"/></svg></span></li>
+          <li class="turn biz"><p class="msg">You're booked for Thursday at 10:15, Sam. Wear something comfortable. See you then.<time>19:13</time></p></li>
+          <li class="cap"><svg aria-hidden="true"><use href="#i-tick"/></svg>Booked into your calendar.</li>
+        </template>
+        <template data-biz="Fynbos Guesthouse" data-ava="F">
+          <li class="turn cust"><p class="msg">Hi, do you have a room for two this Friday and Saturday?<time>20:31</time></p><span class="ava-cust" aria-hidden="true"><svg class="i"><use href="#i-user"/></svg></span></li>
+          <li class="turn biz"><p class="msg">Hi, this is Fynbos Guesthouse's automated assistant. Yes, the garden room is free both nights. R1,450 a night with breakfast. Shall I hold it for you?<time>20:31</time></p></li>
+          <li class="turn cust"><p class="msg">Yes please, Lerato Mokoena<time>20:32</time></p><span class="ava-cust" aria-hidden="true"><svg class="i"><use href="#i-user"/></svg></span></li>
+          <li class="turn biz"><p class="msg">It's held for you, Lerato. The owner will WhatsApp you the booking details tonight.<time>20:32</time></p></li>
+          <li class="cap"><svg aria-hidden="true"><use href="#i-bell"/></svg>Owner notified.</li>
+        </template>
       </figure>
     </div>
   </section>
@@ -740,7 +758,7 @@
       <div class="tablist" role="tablist" aria-label="Example businesses" hidden>
         <button class="tab" role="tab" id="tab-cafe" aria-controls="panel-cafe" aria-selected="true">Café</button>
         <button class="tab" role="tab" id="tab-elec" aria-controls="panel-elec" aria-selected="false" tabindex="-1">Electrician</button>
-        <button class="tab" role="tab" id="tab-bakery" aria-controls="panel-bakery" aria-selected="false" tabindex="-1">Bakery</button>
+        <button class="tab" role="tab" id="tab-physio" aria-controls="panel-physio" aria-selected="false" tabindex="-1">Physio</button>
         <button class="tab" role="tab" id="tab-guest" aria-controls="panel-guest" aria-selected="false" tabindex="-1">Guesthouse</button>
       </div>
 
@@ -767,14 +785,14 @@
             </ol>
           </figure>
         </div>
-        <div class="panel" id="panel-bakery" role="tabpanel" aria-labelledby="tab-bakery">
-          <div><h3>Bakery</h3><p class="does">Takes order details.</p></div>
-          <figure class="float-chat" data-arrive aria-label="Example: bakery cake order">
+        <div class="panel" id="panel-physio" role="tabpanel" aria-labelledby="tab-physio">
+          <div><h3>Physio</h3><p class="does">Answers first-visit questions, so patients arrive prepared.</p></div>
+          <figure class="float-chat" data-arrive aria-label="Example: physio first-visit question">
             <figcaption class="chat-label">Live in the chat</figcaption>
             <ol class="thread">
-              <li class="turn cust"><p class="msg">Can I order a chocolate cake for Saturday?<time>09:14</time></p><span class="ava-cust" aria-hidden="true"><svg class="i"><use href="#i-user"/></svg></span></li>
-              <li class="turn biz" style="--i:1"><p class="msg">Yes, a 20&nbsp;cm chocolate cake is R320. What name should it be under?<time>09:14</time></p></li>
-              <li class="status" style="--i:2"><svg aria-hidden="true"><use href="#i-tick"/></svg>Order details taken</li>
+              <li class="turn cust"><p class="msg">Do I need a doctor's referral for my first visit?<time>08:47</time></p><span class="ava-cust" aria-hidden="true"><svg class="i"><use href="#i-user"/></svg></span></li>
+              <li class="turn biz" style="--i:1"><p class="msg">No referral needed. Bring your medical aid card and any scans or reports you have.<time>08:47</time></p></li>
+              <li class="status" style="--i:2"><svg aria-hidden="true"><use href="#i-tick"/></svg>Answered a first-visit question</li>
             </ol>
           </figure>
         </div>
@@ -915,8 +933,12 @@
       const chat = document.getElementById("hero-chat");
       const thread = document.getElementById("hero-thread");
       if (chat && thread) {
-        const items = [...thread.children];
+        const ava = document.getElementById("hero-ava"), biz = document.getElementById("hero-biz");
+        const scenes = [{ name: biz.textContent, ava: ava.textContent, items: [...thread.children] }];
+        chat.querySelectorAll("template").forEach(t => scenes.push({ name: t.dataset.biz, ava: t.dataset.ava, items: [...t.content.children] }));
+        let items = scenes[0].items;
         const reveal = () => { chat.classList.remove("pre"); items.forEach(li => { li.hidden = false; }); thread.style.height = ""; };
+        const show = sc => { items = sc.items; ava.textContent = sc.ava; biz.textContent = sc.name; thread.replaceChildren(...items); };
         const dots = document.createElement("li");
         dots.className = "turn biz typing"; dots.setAttribute("aria-hidden", "true");
         dots.innerHTML = '<span class="msg"><span></span><span></span><span></span></span>';
@@ -943,17 +965,20 @@
             await wait(li.classList.contains("cust") ? 700 : 450);
           }
         }
-        /* Plays twice, with a long hold on "Booked into your calendar.", then rests on it:
-           enough to show it working, without movement in the corner while someone reads */
+        /* Three businesses, once each (plumber, physio, guesthouse), with a hold on each payoff,
+           then it rests on the last one: shows range without movement in the corner forever */
         async function loop() {
           await fontsReady;
-          thread.style.height = thread.offsetHeight + "px";   // reserve the final size: no layout jump
+          let tallest = 0;   // reserve the tallest scene's height: no layout jump between scenes
+          for (const sc of scenes) { show(sc); tallest = Math.max(tallest, thread.offsetHeight); }
+          thread.style.height = tallest + "px";
           chat.classList.remove("pre");
-          for (let run = 1; run <= 2; run++) {
+          for (let i = 0; i < scenes.length; i++) {
+            thread.classList.add("fading"); await wait(i ? 450 : 0);
+            show(scenes[i]);
             await play();
-            if (run === 2) break;
-            await wait(5000); await whenVisible();
-            thread.classList.add("fading"); await wait(500);
+            if (i === scenes.length - 1) break;
+            await wait(4000); await whenVisible();
           }
         }
         let started = false;
