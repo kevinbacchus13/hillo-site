@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /try/
+Sitemap: https://hillo.co.za/sitemap.xml
