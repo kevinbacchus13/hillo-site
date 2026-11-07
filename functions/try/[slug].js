@@ -3,8 +3,8 @@
 // WhatsApp reads this page's preview card; tapping opens a WhatsApp chat with Hillo,
 // with "Hi, I'd like to try the preview for <Business>." already typed.
 //
-// When the Hillo number goes live, change NUMBER to 27608869171.
-const NUMBER = "15551952857";
+// Hillo's WhatsApp number (live since 7 Nov 2026).
+const NUMBER = "27608869171";
 
 export function onRequestGet({ params }) {
   const slug = String(params.slug || "").toLowerCase();
