@@ -3,11 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hillo Receptionist | WhatsApp bookings for South African small businesses</title>
-<meta name="description" content="Hillo Receptionist answers the WhatsApps you miss while you're with a client. It replies like a person, answers questions and books jobs into your calendar, in English or Afrikaans. Made in George, for small businesses across South Africa.">
+<title>Hillo Receptionist | WhatsApp receptionist for South African small businesses</title>
+<meta name="description" content="Hillo Receptionist is a WhatsApp receptionist for small businesses. It answers the WhatsApps you miss while you're with a client. It replies like a person, answers questions and books jobs into your calendar, in English or Afrikaans. Made in George, for small businesses across South Africa.">
 <meta name="theme-color" content="#F6F8FC">
 <meta name="color-scheme" content="light">
-<!-- Draft preview: keep out of search until launch. Remove at launch. -->
 <!-- Link preview (WhatsApp, social). og.png sits next to index.html in /receptionist. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Hillo">
@@ -25,6 +24,35 @@
 <script>
   /* Motion only when JS runs and the visitor hasn't asked for reduced motion. Without .motion, everything is static and fully visible. */
   if (!matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) document.documentElement.classList.add("motion");
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://hillo.co.za/#org",
+      "name": "Hillo",
+      "legalName": "Hillo Studio (Pty) Ltd",
+      "url": "https://hillo.co.za/",
+      "logo": "https://hillo.co.za/img/hillo-logo.png",
+      "email": "hello@hillo.co.za",
+      "address": { "@type": "PostalAddress", "addressLocality": "George", "addressRegion": "Western Cape", "addressCountry": "ZA" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://hillo.co.za/receptionist/#service",
+      "name": "Hillo Receptionist",
+      "serviceType": "WhatsApp receptionist",
+      "description": "A WhatsApp receptionist for small businesses. It answers customer messages 24/7 in English or Afrikaans, answers questions and books jobs into your calendar.",
+      "url": "https://hillo.co.za/receptionist/",
+      "image": "https://hillo.co.za/receptionist/og.png",
+      "provider": { "@id": "https://hillo.co.za/#org" },
+      "areaServed": { "@type": "Country", "name": "South Africa" },
+      "availableLanguage": ["en", "af"]
+    }
+  ]
+}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -650,7 +678,7 @@
     <div class="wrap">
       <p class="tag">Always on</p>
       <h2 class="h2" id="tasks-title" data-focus>Every message gets a reply. Even when you're busy.</h2>
-      <p class="sub" data-focus>It replies like a person, answers questions and books jobs straight into your calendar. If something needs you, it sends you a message.</p>
+      <p class="sub" data-focus>A WhatsApp receptionist that replies like a person, answers questions and books jobs straight into your calendar. If something needs you, it sends you a message.</p>
       <ul class="tasks">
         <li><span class="icon-tile"><svg class="i"><use href="#i-chat"/></svg></span><h3>Answers questions</h3><p>Prices, hours, areas. In your words.</p></li>
         <li><span class="icon-tile"><svg class="i"><use href="#i-cal"/></svg></span><h3>Books jobs</h3><p>Straight into your calendar.</p></li>
