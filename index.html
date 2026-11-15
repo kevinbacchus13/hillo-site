@@ -160,6 +160,8 @@ a:hover > .wm .i::after,a:focus-visible > .wm .i::after,.wm:hover .i::after{tran
 .card{text-decoration:none;display:grid;gap:18px;min-width:0}
 .card:nth-child(1){grid-column:1 / span 7}
 .card:nth-child(2){grid-column:9 / span 4;margin-top:clamp(0px,14vw,240px)}
+.card:nth-child(3){grid-column:3 / span 5;margin-top:clamp(0px,6vw,96px)}
+.card:nth-child(3) .stage{aspect-ratio:4/5}
 @media (max-width:899px){.card:nth-child(n){grid-column:auto;margin-top:0}}
 .card .stage{border-radius:var(--r);max-width:100%;display:flex;align-items:center;justify-content:center;gap:clamp(10px,2vw,24px);overflow:hidden;padding:clamp(24px,4vw,56px);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
 .card:nth-child(1) .stage{aspect-ratio:5/4}
@@ -167,6 +169,7 @@ a:hover > .wm .i::after,a:focus-visible > .wm .i::after,.wm:hover .i::after{tran
 .card:hover .stage{transform:scale(.985)}
 .card .stage.g{background:var(--forest)}
 .card .stage.s{background:var(--mist)}
+.card .stage.k,.cs .stage.k,.phone-pair.k{background:#17322A}
 .card .meta{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
 .card h3{font-size:var(--s1);line-height:1.2}
 .card .arrow{color:var(--signal-deep);transition:transform .4s}
@@ -405,6 +408,13 @@ footer .wrap{padding-block:clamp(72px,8vw,120px) 32px;display:grid;gap:clamp(32p
         <h2>Recent projects</h2>
       </div>
       <div class="grid cards">
+        <a class="card" href="#kiara" data-cat="web">
+          <div class="stage k shot-stage" aria-hidden="true">
+            <div class="phone-shot"><img src="img/kl-m-home.jpg" alt="" width="780" height="1688" loading="lazy"></div>
+          </div>
+          <div class="meta"><h3>A sports physio brand <span class="bi">for</span> George's trail runners</h3><span class="arrow" aria-hidden="true">→</span></div>
+          <span class="label">Concept · Brand, website, booking</span>
+        </a>
         <a class="card" href="#training" data-cat="app">
           <div class="stage g" aria-hidden="true">
             <div class="phone"><div class="notch"></div>
@@ -497,6 +507,99 @@ footer .wrap{padding-block:clamp(72px,8vw,120px) 32px;display:grid;gap:clamp(32p
   </section>
 </main>
 
+<!-- CASE: KIARA (concept) -->
+<main data-view="kiara" class="cs" hidden>
+  <div class="wrap">
+    <a class="pill" href="#work">← All work</a>
+    <div class="grid cs-head">
+      <span class="label">Concept · Brand, website, booking</span>
+      <h1>A sports physio brand <span class="bi">for</span> George's trail runners</h1>
+      <div class="facts">
+        <div><span class="label">Client</span><span>Kiara Lombard Physio, a fictional practice</span></div>
+        <div><span class="label">For</span><span>Runners in George and the Garden Route</span></div>
+        <div><span class="label">Scope</span><span>Identity, website, WhatsApp booking</span></div>
+        <div><span class="label">Status</span><span>Concept, 2026</span></div>
+      </div>
+    </div>
+
+    <figure class="browser-shot big-shot">
+      <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>Kiara Lombard Physio · concept site</span></div>
+      <picture><source media="(max-width:600px)" srcset="img/kl-m-home.jpg" width="780" height="1688"><img src="img/kl-d-home.jpg" alt="Kiara Lombard Physio home page: 'Back to running. Properly.' beside a photo of a runner on a mountain trail above George." width="1800" height="1125"></picture>
+    </figure>
+
+    <section class="grid story">
+      <span class="label sp">The brief</span>
+      <p class="lead">Make a solo physio's own name feel like a proper brand, <span class="bi">and</span> make booking as easy as sending a WhatsApp.</p>
+      <div class="body">
+        <p>Kiara Lombard Physio is a fictional practice. We made it to show how we'd brand, build and run bookings for a solo specialist: one physiotherapist in George, treating sports and running injuries for the trail crowd on the Outeniqua slopes.</p>
+        <p>Solo practices in South Africa usually trade under the owner's name. That's personal, but it rarely looks like a brand. The job was to keep the name and give it the confidence of one.</p>
+      </div>
+    </section>
+
+    <section class="ap">
+      <div class="grid ap-row">
+        <div class="ap-text">
+          <span class="label sp">The identity</span>
+          <h2>A slash that leans <span class="bi">like</span> a stride.</h2>
+          <p>The wordmark splits Kiara and Lombard with a forward slash. It leans the way a runner does, and it becomes the whole system: dividers, list markers, the favicon and the big mark in the hero.</p>
+        </div>
+        <div class="ap-media">
+          <figure class="browser-shot"><img src="img/kl-brand.jpg" alt="Kiara / Lombard wordmark and the line 'Back to running. Properly.' on dark green, with a large orange slash." width="1200" height="630" loading="lazy"></figure>
+        </div>
+      </div>
+
+      <div class="grid ap-row flip">
+        <div class="ap-text">
+          <span class="label sp">Colour and type</span>
+          <h2>Calm <span class="bi">and</span> premium, with one trail marker.</h2>
+          <p>Outeniqua green ties her to George and reads calm. Persimmon is the only accent, used large or as a shape, never as small text on light. Headlines are set in a semi-condensed sans so they stay big on a phone, with a mono face kept for hours, prices and times.</p>
+        </div>
+        <div class="ap-media">
+          <ul class="swatches" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+            <li><b style="background:#17322A"></b><span>Outeniqua</span><small>Ink and dark bands</small></li>
+            <li><b style="background:#E4572E"></b><span>Persimmon</span><small>The one accent</small></li>
+            <li><b style="background:#F4F1EA;box-shadow:inset 0 0 0 1px #DDE4EC"></b><span>Bone</span><small>Warm ground</small></li>
+            <li><b style="background:#C9D3C6"></b><span>Fynbos sage</span><small>Quiet panels</small></li>
+          </ul>
+        </div>
+      </div>
+
+      <figure class="browser-shot wide-shot">
+        <img src="img/kl-d-services.jpg" alt="Services page: 'Treatment built around your training', with a row of service chips and the first service, a running injury assessment." width="1800" height="1125" loading="lazy">
+        <figcaption>Written runner to runner, in her own voice. Every service shows its price and that you can claim it back from medical aid.</figcaption>
+      </figure>
+
+      <div class="grid ap-row">
+        <div class="ap-text">
+          <span class="label sp">Booking</span>
+          <h2>One message, <span class="bi">and</span> you're booked.</h2>
+          <p>Every button on the site opens WhatsApp. Lia, Kiara's assistant, asks what's going on, finds a time, checks medical aid and sends a reminder the day before. It runs on <a href="/receptionist/">Hillo Receptionist</a>, so Kiara can keep her hands on patients.</p>
+        </div>
+        <div class="ap-media phone-pair k">
+          <div class="phone-shot"><img src="img/kl-chat.jpg" alt="Example WhatsApp chat: Lia, Kiara's assistant, books a running injury assessment for knee pain after a trail race." width="884" height="1416" loading="lazy"></div>
+        </div>
+      </div>
+
+      <figure class="browser-shot wide-shot">
+        <img src="img/kl-d-about.jpg" alt="About page: 'A physio who runs the same trails you do', with a photo of a trail runner's legs in the forest." width="1800" height="1125" loading="lazy">
+        <figcaption>The about page tells her story, so a first visit feels like meeting someone you already know.</figcaption>
+      </figure>
+    </section>
+
+    <section class="grid story details">
+      <span class="label sp">Details</span>
+      <ul class="dl">
+        <li><h3>What we'd aim <span class="bi">for</span></h3><p>Fewer calls in the middle of a session, and more first visits booked after hours, when runners plan their week.</p></li>
+        <li><h3>Prices up front</h3><p>Assessment, follow-up and gait analysis are priced on the page, with medical aid explained in plain words.</p></li>
+        <li><h3>One photo style</h3><p>Early, warm side light and olive greens on every image. Placeholders for now, ready to swap for a real shoot.</p></li>
+        <li><h3>Honest about it</h3><p>The concept site says it's fictional in the footer and is hidden from search, so it never passes for a real practice.</p></li>
+      </ul>
+    </section>
+
+    <a class="next" href="#booking"><span class="label">Next project</span><span class="t">A website <span class="bi">for</span> a WhatsApp receptionist →</span></a>
+  </div>
+</main>
+
 <!-- CASE: TRAINING -->
 <main data-view="training" class="cs" hidden>
   <div class="wrap">
@@ -527,7 +630,7 @@ footer .wrap{padding-block:clamp(72px,8vw,120px) 32px;display:grid;gap:clamp(32p
       <span class="label sp">The approach</span>
       <div class="body"><p>Calm, neutral and grown-up, with a forest green accent. It should feel like a professional service, because it is one. A web app rather than an app store listing, so clients open a link and start.</p></div>
     </section>
-    <a class="next" href="#booking"><span class="label">Next project</span><span class="t">A website <span class="bi">for</span> a WhatsApp receptionist →</span></a>
+    <a class="next" href="#kiara"><span class="label">Next project</span><span class="t">A sports physio brand <span class="bi">for</span> George's trail runners →</span></a>
   </div>
 </main>
 
@@ -663,7 +766,7 @@ footer .wrap{padding-block:clamp(72px,8vw,120px) 32px;display:grid;gap:clamp(32p
 })();
 
 /* views */
-const views=document.querySelectorAll('[data-view]'),cases=['training','booking'];
+const views=document.querySelectorAll('[data-view]'),cases=['kiara','training','booking'];
 const navLinks=document.querySelectorAll('[data-nav]');
 function setNav(id){navLinks.forEach(a=>{if(a.dataset.nav===id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}
 function route(){
