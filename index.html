@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Hillo is a design studio on the Garden Route. Brands, websites and web apps for local businesses, thoughtfully designed and built fast.">
+<meta name="description" content="Hillo is a design studio in George on the Garden Route. Brands, websites and booking tools for local businesses, from first look to first booking.">
 <title>Hillo</title>
 <link rel="canonical" href="https://hillo.co.za/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2314213d'/%3E%3Cpath d='M10.5 7.5v17M10.5 17.5a5.2 5.2 0 0 1 10.4 0v7' fill='none' stroke='%23fff' stroke-width='3.6' stroke-linecap='round'/%3E%3Ccircle cx='24.4' cy='9' r='2.6' fill='%232f7de1'/%3E%3C/svg%3E">
@@ -127,15 +127,22 @@ a:hover > .wm .i::after,a:focus-visible > .wm .i::after,.wm:hover .i::after{tran
 @media (max-width:640px){.nav .hide-s{display:none}}
 
 /* hero */
-.hero{padding-block:clamp(56px,9vw,150px) clamp(48px,6vw,96px);row-gap:clamp(28px,3vw,48px)}
+.hero{padding-block:clamp(32px,4vw,72px) clamp(56px,6vw,88px);row-gap:clamp(28px,3vw,48px)}
 .hero .loc{grid-column:1 / span 12}
-.hero h1{font-size:var(--s3);grid-column:1 / span 11}
-.hero .sub{grid-column:1 / span 7;font-size:clamp(24px,1.5vw + 15px,38px);line-height:1.25;letter-spacing:-.02em;font-weight:500;color:var(--ink);max-width:24ch;text-wrap:balance}
-.hero .sub .chip{animation-delay:.6s}
-.hero .side{grid-column:9 / span 4;display:grid;gap:24px;align-self:end}
-.hero .side p{color:var(--muted);max-width:38ch}
+.hero h1{font-size:var(--s3);grid-column:1 / span 11;max-width:14ch}
+.hero .side{grid-column:1 / span 6;display:grid;gap:28px;align-self:end;margin-top:clamp(8px,2vw,24px)}
+.hero .side p{color:var(--muted);max-width:34ch;font-size:clamp(18px,.5vw + 15px,21px);line-height:1.5;text-wrap:pretty}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:10px}
-@media (max-width:899px){.hero .loc,.hero h1,.hero .sub,.hero .side{grid-column:auto}}
+.hero .rcpt{grid-column:8 / span 5;justify-self:end;align-self:end;display:inline-flex;align-items:center;gap:14px;min-height:48px;text-decoration:none;color:var(--ink);font-size:15px;line-height:1.35}
+.rcpt .dots{flex-shrink:0;display:inline-flex;gap:4px;align-items:center;padding:9px 11px;background:var(--mist);border-radius:12px 12px 12px 4px}
+.rcpt .dots i{width:6px;height:6px;border-radius:50%;background:#C9D4E3}
+.rcpt .dots i:last-child{background:var(--signal)}
+.rcpt b{font-weight:500}
+.rcpt .m{color:var(--muted)}
+.rcpt .go{flex-shrink:0;color:var(--signal-deep);transition:transform .3s}
+.rcpt:hover .go{transform:translateX(4px)}
+.rcpt:hover b{color:var(--signal-deep)}
+@media (max-width:899px){.hero .loc,.hero h1,.hero .side,.hero .rcpt{grid-column:auto}.hero .rcpt{justify-self:start}}
 
 .showcase{align-items:end;padding-bottom:clamp(96px,12vw,200px)}
 .showcase .cap{grid-column:1 / span 2;display:grid;gap:6px;font-size:14px;color:var(--muted);padding-bottom:8px}
@@ -369,7 +376,7 @@ footer .wrap{padding-block:clamp(72px,8vw,120px) 32px;display:grid;gap:clamp(32p
 <header class="wrap">
   <div class="top">
     <a class="logo" href="#top" aria-label="hillo, home"><span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span></a>
-    <nav class="nav" aria-label="Main"><a href="#work" data-nav="work">Work</a><a class="hide-s" href="#services" data-nav="services">Services</a><a class="hide-s" href="#about" data-nav="about">About</a><a class="say" href="#contact" data-nav="contact" aria-label="Say hillo"><span aria-hidden="true">Say</span> <span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span></a></nav>
+    <nav class="nav" aria-label="Main"><a href="#work" data-nav="work">Work</a><a class="hide-s" href="#services" data-nav="services">Services</a><a class="hide-s" href="/receptionist/">Receptionist</a><a class="hide-s" href="#about" data-nav="about">About</a><a class="say" href="#contact" data-nav="contact" aria-label="Say hillo"><span aria-hidden="true">Say</span> <span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span></a></nav>
   </div>
 </header>
 
@@ -378,28 +385,16 @@ footer .wrap{padding-block:clamp(72px,8vw,120px) 32px;display:grid;gap:clamp(32p
   <div class="wrap">
     <section class="grid hero">
       <p class="label sp loc">Design studio · Garden Route</p>
-      <h1 aria-label="Brands and websites for local businesses."><span aria-hidden="true">Brands <span class="bi">and</span> websites <span class="bi">for</span> <span class="rot"><span class="rot-in">local businesses</span>.</span></span></h1>
-      <p class="sub"><span class="sr">Websites and web apps, thoughtfully designed and built fast.</span><span aria-hidden="true"><span style="white-space:nowrap">Websites <a class="chip c1" href="#work" tabindex="-1" title="See the work"><span class="mini"><b></b><i></i></span></a></span> <span class="bi">and</span> web <span style="white-space:nowrap">apps <a class="chip c2" href="#training" tabindex="-1" title="See the web app"><i></i><i></i></a>,</span> thoughtfully designed <span class="bi">and</span> built fast.</span></p>
+      <h1>From first look <span class="bi">to</span> first booking.</h1>
       <div class="side">
-        <p>We look at the whole business first: how it looks, how people find it and how they book. Then we design and build what it needs, to the standard big brands expect.</p>
-        <div class="ctas"><a class="btn" href="#work">See the work <span aria-hidden="true">→</span></a><a class="btn ghost say-h" href="#contact" aria-label="Say hillo"><span aria-hidden="true">Say</span> <span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span></a></div>
+        <p>Brands, websites and booking tools for local businesses. Designed and built by a small studio in George.</p>
+        <div class="ctas"><a class="btn" href="#work">See our work <span aria-hidden="true">→</span></a><a class="btn ghost say-h" href="#contact" aria-label="Say hillo"><span aria-hidden="true">Say</span> <span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span></a></div>
       </div>
-    </section>
-
-    <section class="grid showcase" aria-label="Featured screens">
-      <div class="cap"><b>Selected screens</b><span>Hillo Receptionist and a training web app, 2026</span></div>
-      <div class="panel" aria-hidden="true">
-        <div class="phone"><div class="notch"></div>
-          <div class="wa"><div class="head">Bookings<small>Replies instantly</small></div>
-            <div class="msgs"><div class="b me">Hi, can I book for Saturday?</div><div class="b">Sure. Which time suits you?</div>
-              <div class="chips"><span>09:00</span><span class="on">10:30</span><span>14:00</span></div><div class="b">Booked: Sat, 10:30.</div></div></div></div>
-        <div class="phone"><div class="notch"></div>
-          <div class="tr"><div class="t">Leave it</div><div class="bar"><b></b></div><div class="vid"></div>
-            <p>Hold the treat in a closed hand. Wait for your dog to look away, then reward.</p></div></div>
-        <div class="phone"><div class="notch"></div>
-          <div class="wa"><div class="head">Saturday<small>4 bookings</small></div>
-            <div class="msgs start"><div class="b">09:00 · Confirmed</div><div class="b">10:30 · Confirmed</div><div class="b">14:00 · Open</div><div class="b">15:30 · Confirmed</div></div></div></div>
-      </div>
+      <a class="rcpt" href="/receptionist/">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span><b>Hillo Receptionist</b><span class="m"> answers your WhatsApp while you work</span></span>
+        <span class="go" aria-hidden="true">→</span>
+      </a>
     </section>
 
     <section class="work" id="work">
@@ -455,13 +450,6 @@ footer .wrap{padding-block:clamp(72px,8vw,120px) 32px;display:grid;gap:clamp(32p
   </section>
 
   <div class="wrap">
-    <a class="also" href="/receptionist/">
-      <span class="label sp">Also from hillo</span>
-      <span class="lock" aria-label="hillo receptionist"><span class="wm" aria-hidden="true">h<span class="i">ı</span>llo</span> <span class="desc" aria-hidden="true">receptionist</span></span>
-      <span class="txt">Answers your WhatsApp and books your clients while you work.</span>
-      <span class="go">See how it works <span aria-hidden="true">→</span></span>
-    </a>
-
     <section class="process" id="process">
       <div class="grid shead"><span class="label sp">How it works</span><h2>From <span class="bi">a</span> conversation <span class="bi">to</span> launch, <span class="bi">in</span> three steps.</h2></div>
       <ol class="grid steps">
